@@ -151,6 +151,7 @@ $transition-speed: 0.2s;
     font-size: 12px;
     line-height: 1.5;
     text-align: center;
+    overflow-y: auto;
 
     /* Gestione testo lungo */
     overflow: hidden;
