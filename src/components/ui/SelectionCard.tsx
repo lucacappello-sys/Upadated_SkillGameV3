@@ -32,9 +32,11 @@ export default function SelectionCard({
   const sectorClass = isSector ? 'selection-card__illustration-wrapper--dark-bg' : '';
   const noShadowClass = noShadow ? 'selection-card--no-shadow' : '';
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (isInteractive && onSelect) {
       onSelect(data.id);
+      // Rimuovi il focus dall'elemento per forzare l'aggiornamento visivo immediato su touch
+      (e.currentTarget as HTMLElement).blur();
     }
   };
 
@@ -42,6 +44,7 @@ export default function SelectionCard({
     <div
       className={`selection-card ${data.colorClass} ${selectedClass} ${staticClass} ${noShadowClass}`}
       onClick={handleClick}
+      tabIndex={isInteractive ? 0 : -1} // Rende l'elemento focusable solo se interattivo
     >
       <div className="selection-card__label">{data.label}</div>
 

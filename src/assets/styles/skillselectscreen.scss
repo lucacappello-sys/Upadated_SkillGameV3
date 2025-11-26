@@ -48,13 +48,9 @@ $transition-speed: 0.2s;
   background-color: $color-background-gray;
   border-radius: 16px;
   padding: 16px;
-  /* Ridotto da 24px */
   height: 300px;
-  /* Ridotto da 300px per tablet */
   width: 100%;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-
-  /* Flex per gestire il contenuto interno */
   display: flex;
   flex-direction: column;
 }
@@ -65,19 +61,12 @@ $transition-speed: 0.2s;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  /* Ridotto da 16px */
   max-width: 448px;
   margin: 0 auto;
-
-  /* Scroll e altezza */
   height: 100%;
-  /* Si adatta al contenitore */
   overflow-y: auto;
-  /* Abilita scroll verticale se serve */
   padding-right: 8px;
-  /* Spazio per scrollbar */
 
-  /* Scrollbar custom per coerenza */
   &::-webkit-scrollbar {
     width: 6px;
   }
