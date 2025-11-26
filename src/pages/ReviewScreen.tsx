@@ -39,6 +39,7 @@ export default function ReviewScreen() {
             <SelectionCard
               data={roleData}
               isInteractive={false} // Disabilita hover/click
+              noShadow={true} // Nessuna ombra nella review
             />
           )}
           {sectorData && (
@@ -46,6 +47,7 @@ export default function ReviewScreen() {
               data={sectorData}
               isSector={true}
               isInteractive={false} // Disabilita hover/click
+              noShadow={true} // Nessuna ombra nella review
             />
           )}
         </div>

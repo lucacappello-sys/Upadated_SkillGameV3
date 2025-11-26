@@ -24,24 +24,27 @@ $color-fill-bar: #4a90e2; // Colore di riempimento standard skill
   gap: 20px;
   width: 95%;
   height: 88%;
-  max-height: 650px; 
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  max-height: 650px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 
   /* COLONNA SINISTRA: IMMAGINE */
   &__image-section {
-    flex: 1.2; /* Occupa leggermente più spazio delle colonne info */
+    flex: 1.2;
+    /* Occupa leggermente più spazio delle colonne info */
     background-color: white;
     border-radius: 16px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     img {
       width: 100%;
       height: 100%;
-      object-fit: contain; /* O 'cover' a seconda dell'immagine */
-      padding: 20px; /* Padding interno per l'immagine */
+      object-fit: contain;
+      /* O 'cover' a seconda dell'immagine */
+      padding: 20px;
+      /* Padding interno per l'immagine */
     }
   }
 
@@ -58,18 +61,26 @@ $color-fill-bar: #4a90e2; // Colore di riempimento standard skill
   flex: 1;
   background-color: white;
   border-radius: 16px;
-  padding: 20px;
+  padding: 16px;
+  /* Ridotto da 20px */
   display: flex;
   flex-direction: column;
-  gap: 38px;
-  overflow-y: auto; 
-  justify-content: flex-start;
+  gap: 12px;
+  /* Ridotto da 38px per far entrare tutto */
+  overflow: hidden;
+  /* Niente scroll */
+  justify-content: space-between;
+  /* Distribuisce lo spazio uniformemente */
 
   &__title {
     color: $color-primary-blue;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
+    /* Ridotto leggermente da 1.25rem */
     font-weight: bold;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
+    /* Ridotto da 8px */
+    flex-shrink: 0;
+    /* Il titolo non si riduce */
   }
 }
 
@@ -77,11 +88,15 @@ $color-fill-bar: #4a90e2; // Colore di riempimento standard skill
 .profile-skill {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
+  /* Ridotto da 4px */
+  flex-shrink: 1;
+  /* Permette alle skill di ridursi se necessario */
 
   &__bar-bg {
     width: 100%;
-    height: 15px;
+    height: 12px;
+    /* Ridotto da 15px */
     background-color: $color-bg-bar;
     border-radius: 99px;
     overflow: hidden;
@@ -94,7 +109,8 @@ $color-fill-bar: #4a90e2; // Colore di riempimento standard skill
   }
 
   &__name {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    /* Ridotto da 0.85rem */
     color: $color-text-light;
     font-weight: 600;
   }
@@ -104,27 +120,33 @@ $color-fill-bar: #4a90e2; // Colore di riempimento standard skill
 .profile-task {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
+  /* Ridotto da 4px */
+  flex-shrink: 1;
+  /* Permette ai task di ridursi se necessario */
 
   &__indicator-wrapper {
     display: flex;
     align-items: center;
     width: 100%;
-    height: 15px;
+    height: 12px;
+    /* Ridotto da 15px */
     background-color: $color-bg-bar;
     border-radius: 99px;
     overflow: hidden;
-    
+
   }
 
   &__indicator {
     height: 100%;
-    width: 40px; /* Larghezza fissa dell'indicatore colorato come da design */
+    width: 35px;
+    /* Ridotto da 40px */
     border-radius: 99px;
   }
 
   &__name {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    /* Ridotto da 0.85rem */
     color: $color-text-light;
     font-weight: 600;
   }
@@ -134,16 +156,19 @@ $color-fill-bar: #4a90e2; // Colore di riempimento standard skill
 @media (max-width: 1024px) {
   .profile-card {
     flex-direction: column;
-    max-height: none; /* Rimuove limite altezza su mobile */
+    max-height: none;
+    /* Rimuove limite altezza su mobile */
     overflow-y: auto;
 
     &__image-section {
-      height: 300px; /* Altezza fissa immagine su mobile */
+      height: 300px;
+      /* Altezza fissa immagine su mobile */
       flex: none;
     }
 
     &__info-section {
-      flex-direction: column; /* Colonne skill/task una sotto l'altra */
+      flex-direction: column;
+      /* Colonne skill/task una sotto l'altra */
     }
   }
 }

@@ -57,14 +57,16 @@ $transition-speed: 0.2s;
   /* Impedisce che si rimpiccioliscano */
 
   cursor: pointer;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  /* Aumentato da 0 10px 20px rgba(0, 0, 0, 0.1) */
   position: relative;
   align-items: center;
 
   /* Effetto Hover */
   &:hover:not(.selection-card--static) {
     transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    /* Aumentato da 0.15 */
     z-index: 2;
   }
 
@@ -85,7 +87,8 @@ $transition-speed: 0.2s;
 
     &:hover {
       transform: none;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      /* Mantiene l'ombra aumentata */
     }
 
     &.selection-card--selected {
@@ -94,6 +97,15 @@ $transition-speed: 0.2s;
 
     /* In review/results le card possono essere leggermente più piccole se necessario */
     /* width: 260px; height: 400px; */
+  }
+
+  /* Modifier per review screen: nessuna ombra */
+  &--no-shadow {
+    box-shadow: none !important;
+
+    &:hover {
+      box-shadow: none !important;
+    }
   }
 
   &__label {
@@ -151,7 +163,6 @@ $transition-speed: 0.2s;
     font-size: 12px;
     line-height: 1.5;
     text-align: center;
-    overflow-y: auto;
 
     /* Gestione testo lungo */
     overflow: hidden;

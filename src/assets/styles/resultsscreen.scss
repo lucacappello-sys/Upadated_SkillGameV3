@@ -21,8 +21,6 @@ $color-final-score-border: #4fb286; // Dark Green
   display: flex;
   flex-wrap: nowrap;
   gap: 32px;
-  /* gap-8 */
-  /* Rimuovi padding extra che potrebbe causare overflow */
   padding: 0 1rem;
 
   align-items: stretch;
