@@ -53,10 +53,10 @@ $color-bg-main: #ffffff;
 /* Utility per le pagine interne per gestire i propri spazi */
 .page-content {
   width: 100%;
-  min-height: 0;
-  /* Permette al contenuto di ridursi se necessario */
-  flex: 1 1 0;
-  /* Può crescere e ridursi, base 0 per evitare overflow */
+  height: 100%;
+  /* Occupa 100% dello spazio del main */
+  max-height: 100%;
+  /* Non superare il 100% */
 
   display: flex;
   flex-direction: column;
@@ -64,8 +64,18 @@ $color-bg-main: #ffffff;
   justify-content: center;
   /* Centra verticalmente il contenuto nella pagina */
 
-  padding: 20px;
-  /* Padding interno sicuro per il contenuto */
-  overflow: visible;
-  /* Permette al contenuto di essere visibile e non tagliato */
+  padding: 10px;
+  /* Ridotto da 20px per tablet */
+  box-sizing: border-box;
+  /* Include padding nel calcolo dell'altezza */
+  overflow: hidden;
+  /* Nasconde overflow per evitare che spinga il footer */
+
+  /* Media query per tablet */
+  @media (max-width: 1024px) {
+    padding: 8px;
+    /* Ancora meno padding su tablet */
+    justify-content: flex-start;
+    /* Allinea in alto invece che centrare */
+  }
 }
