@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGame } from '../context/useGame';
-import { ROLES, ROLE_PROFILES } from '../data/GameData';
+import { ROLES, ROLE_PROFILES, ROLE_COLORS } from '../data/GameData';
 import '../assets/styles/operatorprofile.scss';
 
 export default function OperatorProfileScreen() {
@@ -11,6 +11,8 @@ export default function OperatorProfileScreen() {
   const roleData = ROLES.find(r => r.id === selectedRole);
   // Recupera profilo o usa default vuoto se non trovato
   const profileData = selectedRole ? ROLE_PROFILES[selectedRole] : null;
+  // Ottieni il colore del ruolo selezionato
+  const roleColor = selectedRole ? ROLE_COLORS[selectedRole] : '#4faadd';
 
   useEffect(() => {
     updateHeader({
@@ -35,7 +37,7 @@ export default function OperatorProfileScreen() {
   return (
     <div className="page-content">
       <div className="operator-profile-content">
-        <div className="profile-card">
+        <div className="profile-card" style={{ backgroundColor: roleColor }}>
           {/* Immagine */}
           <div className="profile-card__image-section">
             <img src={roleData.illustration} alt={roleData.title} />
@@ -45,13 +47,13 @@ export default function OperatorProfileScreen() {
           <div className="profile-card__info-section">
             {/* Skills */}
             <div className="info-column">
-              <h4 className="info-column__title">Skills</h4>
+              <h4 className="info-column__title" style={{ color: roleColor }}>Skills</h4>
               {profileData.skills.map((skill, idx) => (
                 <div key={idx} className="profile-skill">
                   <div className="profile-skill__bar-bg">
-                    <div 
-                      className="profile-skill__bar-fill" 
-                      style={{ width: `${skill.value}%` }} 
+                    <div
+                      className="profile-skill__bar-fill"
+                      style={{ width: `${skill.value}%`, backgroundColor: roleColor }}
                     />
                   </div>
                   <span className="profile-skill__name">{skill.name}</span>
@@ -61,13 +63,13 @@ export default function OperatorProfileScreen() {
 
             {/* Tasks */}
             <div className="info-column">
-              <h4 className="info-column__title">Tasks</h4>
+              <h4 className="info-column__title" style={{ color: roleColor }}>Tasks</h4>
               {profileData.tasks.map((task, idx) => (
                 <div key={idx} className="profile-task">
                   <div className="profile-task__indicator-wrapper">
-                    <div 
-                      className="profile-task__indicator" 
-                      style={{ backgroundColor: task.color }} 
+                    <div
+                      className="profile-task__indicator"
+                      style={{ backgroundColor: task.color }}
                     />
                   </div>
                   <span className="profile-task__name">{task.name}</span>
