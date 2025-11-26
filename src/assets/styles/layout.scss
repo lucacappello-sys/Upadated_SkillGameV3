@@ -65,15 +65,11 @@ $color-bg-main: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  /* Centra verticalmente il contenuto nella pagina */
-
+  justify-content: space-between;
   padding: 10px;
-  /* Ridotto da 20px per tablet */
   box-sizing: border-box;
-  /* Include padding nel calcolo dell'altezza */
   overflow: hidden;
-  /* Nasconde overflow per evitare che spinga il footer */
+
 
   /* Media query per tablet */
   @media (max-width: 1024px) {
