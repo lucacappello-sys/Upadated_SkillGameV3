@@ -55,10 +55,8 @@ $color-bg-main: #ffffff;
   width: 100%;
   min-height: 0;
   /* Permette al contenuto di ridursi se necessario */
-  max-height: 100%;
-  /* Non superare 100% dell'area disponibile */
-  flex: 1 1 auto;
-  /* Può crescere e ridursi */
+  flex: 1 1 0;
+  /* Può crescere e ridursi, base 0 per evitare overflow */
 
   display: flex;
   flex-direction: column;
@@ -68,6 +66,6 @@ $color-bg-main: #ffffff;
 
   padding: 20px;
   /* Padding interno sicuro per il contenuto */
-  overflow: hidden;
-  /* Evita che il contenuto esca */
+  overflow: visible;
+  /* Permette al contenuto di essere visibile e non tagliato */
 }
