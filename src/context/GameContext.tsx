@@ -26,7 +26,7 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
      // ... (logica calcolo) ...
      // Per brevità non la riscrivo tutta, ma avvolgila in useCallback o lasciala fuori se non ha dipendenze reattive
      // Se usa setScores, va bene.
-     const randomScore = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min);
+     //const randomScore = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min);
      const newScores = { /* ... */ }; 
      // ...
      setScores(newScores);

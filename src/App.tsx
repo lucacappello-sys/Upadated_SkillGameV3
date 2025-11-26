@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { GameProvider } from './context/GameContext'; // Assicurati che importi il Provider
 import MainLayout from './components/layout/MainLayout';
