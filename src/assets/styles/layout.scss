@@ -36,6 +36,8 @@ $color-bg-main: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 0;
+    /* Importante: permette al flex child di ridursi */
     /* padding: 1rem; <--- Rimuoviamo il padding globale se crea spazi indesiderati ai bordi */
   }
 
@@ -51,9 +53,12 @@ $color-bg-main: #ffffff;
 /* Utility per le pagine interne per gestire i propri spazi */
 .page-content {
   width: 100%;
-  height: 90%;
-  flex: 1;
-  /* Si adatta allo spazio del main */
+  min-height: 0;
+  /* Permette al contenuto di ridursi se necessario */
+  max-height: 100%;
+  /* Non superare 100% dell'area disponibile */
+  flex: 1 1 auto;
+  /* Può crescere e ridursi */
 
   display: flex;
   flex-direction: column;
@@ -63,4 +68,6 @@ $color-bg-main: #ffffff;
 
   padding: 20px;
   /* Padding interno sicuro per il contenuto */
+  overflow: hidden;
+  /* Evita che il contenuto esca */
 }
