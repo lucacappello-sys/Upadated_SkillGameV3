@@ -7,8 +7,12 @@ $color-bg-main: #ffffff;
 .app-layout {
   display: flex;
   flex-direction: column;
+
+  /* Fallback per browser più vecchi */
   height: 100vh;
-  /* Forza l'altezza a tutto schermo viewport */
+  /* Usa dvh (dynamic viewport height) per tablet/mobile - si adatta alla barra degli indirizzi */
+  height: 100dvh;
+
   width: 100vw;
   /* Forza la larghezza a tutto schermo viewport */
   background-color: $color-bg-main;
@@ -27,6 +31,8 @@ $color-bg-main: #ffffff;
   &__main {
     flex: 1;
     /* Occupa tutto lo spazio verticale disponibile */
+    min-height: 0;
+    /* Importante: permette al flex child di ridursi */
     position: relative;
     width: 100%;
     overflow-y: auto;
@@ -36,8 +42,6 @@ $color-bg-main: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 0;
-    /* Importante: permette al flex child di ridursi */
     /* padding: 1rem; <--- Rimuoviamo il padding globale se crea spazi indesiderati ai bordi */
   }
 
