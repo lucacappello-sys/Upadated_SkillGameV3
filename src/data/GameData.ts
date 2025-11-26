@@ -8,7 +8,7 @@ import sector2Img from '../assets/images/Automotive.png';
 import sector3Img from '../assets/images/Logistic.png';
 
 
-import sector4Img from '../assets/images/Food.png'; 
+import sector4Img from '../assets/images/Food.png';
 import sector5Img from '../assets/images/Automotive.png';
 
 
@@ -23,6 +23,12 @@ export const IMAGES = {
   sector5: sector5Img,
 };
 
+export const ROLE_COLORS: Record<number, string> = {
+  1: '#3FACE2', // Blue
+  2: '#E69B38', // Orange
+  3: '#2956A5'  // Navy
+};
+
 export const ROLES = [
   {
     id: 1,
@@ -30,7 +36,7 @@ export const ROLES = [
     title: 'SMART LINE OPERATOR',
     description: 'Works alongside robots in shared areas, supervises their operations, and performs basic troubleshooting. As robots handle the most manual and repetitive tasks, this role requires broader skills than before, especially technical, analytical, and collaboration skills.',
     colorClass: 'card-color--blue',
-    illustration: IMAGES.role1 
+    illustration: IMAGES.role1
   },
   {
     id: 2,
@@ -139,8 +145,8 @@ export const SKILLS_DATA: Record<string, string[]> = {
   ]
 };
 
-export const ROLE_PROFILES: Record<number, { skills: {name:string, value:number}[], tasks: {name:string, color:string}[] }> = {
-  1: { 
+export const ROLE_PROFILES: Record<number, { skills: { name: string, value: number }[], tasks: { name: string, color: string }[] }> = {
+  1: {
     skills: [
       { name: 'Technical', value: 70 }, { name: 'Interaction/UX', value: 60 },
       { name: 'Analytical', value: 50 }, { name: 'Collaboration/Communication', value: 80 },
@@ -156,7 +162,7 @@ export const ROLE_PROFILES: Record<number, { skills: {name:string, value:number}
       { name: 'Handling of Alarms and Failures', color: '#e17055' }
     ]
   },
-  2: { 
+  2: {
     skills: [
       { name: 'Technical', value: 60 }, { name: 'Interaction/UX', value: 50 },
       { name: 'Analytical', value: 70 }, { name: 'Collaboration/Communication', value: 90 },
@@ -172,7 +178,7 @@ export const ROLE_PROFILES: Record<number, { skills: {name:string, value:number}
       { name: 'Handling of Alarms and Failures', color: '#e17055' }
     ]
   },
-  3: { 
+  3: {
     skills: [
       { name: 'Technical', value: 95 }, { name: 'Interaction/UX', value: 80 },
       { name: 'Analytical', value: 90 }, { name: 'Collaboration/Communication', value: 50 },
