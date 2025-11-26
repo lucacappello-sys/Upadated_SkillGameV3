@@ -16,10 +16,10 @@ export default function SkillBox({ skillType, title, selectedSkills, onToggle }:
   let gridClass = 'skill-list--column'; // Default 1 colonna
   let contentWidthClass = 'skill-select-content--single-column';
 
-  if (['technical', 'interaction'].includes(skillType)) {
+  if (['technical'].includes(skillType)) {
     gridClass = 'skill-list--grid-3';
     contentWidthClass = 'skill-select-content--three-column';
-  } else if (['collaboration', 'management'].includes(skillType)) {
+  } else if (['interaction'].includes(skillType)) {
     gridClass = 'skill-list--grid-2';
     contentWidthClass = 'skill-select-content--two-column';
   }

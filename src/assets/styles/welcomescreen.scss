@@ -1,6 +1,7 @@
-$color-box-bg: #d4eaf8; 
-$color-text: #2c3e50; 
-$color-start-button: #4a6fa5; 
+$color-box-bg: #D4EBF7; 
+$color-text: #000000; 
+$color-title: #232F66;
+$color-start-button: #264C9E; 
 
 .welcome-screen {
   width: 100%;
@@ -20,15 +21,15 @@ $color-start-button: #4a6fa5;
   }
 
   &__title {
-    color: $color-text;
-    font-size: 24px;
+    color: $color-title;
+    font-size: 30px;
     font-weight: bold;
     margin-bottom: 20px;
   }
 
   &__text {
     color: $color-text;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     line-height: 1.5;
   }
 
@@ -39,7 +40,7 @@ $color-start-button: #4a6fa5;
     margin-top: 20px;
     border: none;
     border-radius: 9999px;
-    font-size: 18px;
+    font-size: 30px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s;

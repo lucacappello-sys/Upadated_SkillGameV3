@@ -35,28 +35,20 @@ $transition-speed: 0.2s;
  * ------------------------- */
 .selection-card {
   background-color: #ccc;
-  /* Fallback */
   border-radius: 20px;
-  /* Arrotondamento più moderno */
   padding: 24px;
   transition: transform $transition-speed, box-shadow $transition-speed;
 
   display: flex;
   flex-direction: column;
 
-  /* *** DIMENSIONI FISSE UNIFICATE *** */
-  /* Questo garantisce che Ruoli e Settori siano identici */
   flex: 0 0 auto;
-  /* Non crescere, non restringere, rispetta la width */
   width: 300px;
-  /* Larghezza fissa confortevole */
   height: 96%;
-  /* Altezza fissa per allineamento perfetto */
 
   cursor: pointer;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   position: relative;
-  /* Per z-index su hover */
   align-items: center;
 
   /* Effetto Hover */
@@ -66,13 +58,11 @@ $transition-speed: 0.2s;
     z-index: 2;
   }
 
-  /* Stato Selezionato */
   &--selected {
     box-shadow: 0 0 0 4px $color-selection-ring, 0 20px 25px rgba(0, 0, 0, 0.1);
     transform: translateY(-5px) scale(1.02);
   }
 
-  /* Stato Statico (Review/Results) */
   &--static {
     cursor: default;
 
@@ -95,6 +85,7 @@ $transition-speed: 0.2s;
     font-weight: 500;
     margin-bottom: 12px;
     opacity: 0.9;
+    text-align: left;
   }
 
   &__illustration-wrapper {
@@ -117,7 +108,7 @@ $transition-speed: 0.2s;
   &__illustration {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
   }
 
   &__title {
@@ -125,17 +116,24 @@ $transition-speed: 0.2s;
     text-align: center;
     margin-bottom: 12px;
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 28px;
     line-height: 1.1;
     text-transform: uppercase;
   }
 
+  &__role {
+    color: $color-white;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: left;
+    margin-bottom: 12px;
+  }
+
   &__description {
     color: $color-white;
-    font-size: 0.85rem;
+    font-size: 12px;
     line-height: 1.5;
     text-align: center;
-    /* O left, a seconda del gusto */
 
     /* Gestione testo lungo */
     overflow: hidden;
@@ -144,7 +142,6 @@ $transition-speed: 0.2s;
     /* Mostra max 7 righe */
     -webkit-box-orient: vertical;
 
-    /* Spinge il testo a riempire lo spazio ma non oltre */
     flex: 1;
   }
 }

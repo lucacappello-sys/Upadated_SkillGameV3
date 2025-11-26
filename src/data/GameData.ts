@@ -133,9 +133,9 @@ export const SKILLS_DATA: Record<string, string[]> = {
   ],
   interaction: [
     'Production monitoring', 'Use gesture-based controls', 'Interact physically with cobots',
-    'Navigate and operate touchscreen-based interfaces', 'Use voice commands to start, stop, or adjust machinery.',
-    'Collaborate with robotic systems in shared workspaces', 'Respond to haptic signals',
-    'Utilize AR devices'
+    'Navigate and operate touchscreen-based interfaces', 'Use voice commands to start, stop, or adjust machinery without physical interaction.',
+    'Collaborate with robotic systems in shared workspaces', 'Respond to haptic (vibration) signals or tactile feedback',
+    'Utilize AR devices (such as smart glasses or tablets) to receive real-time, step-by-step assembly instructions and visual guidance.'
   ]
 };
 

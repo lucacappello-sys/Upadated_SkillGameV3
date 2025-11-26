@@ -10,7 +10,7 @@ $transition-speed: 0.2s;
  * ------------------------- */
 .skill-select-content {
   width: 100%;
-  
+  height: 50%;
   /* Larghezze specifiche per i vari layout delle skills */
   &--single-column { max-width: 48rem; /* max-w-3xl */ }
   &--two-column { max-width: 64rem; /* max-w-4xl */ }
@@ -27,6 +27,7 @@ $transition-speed: 0.2s;
 
 .skill-group {
   /* Contenitore grigio chiaro arrotondato */
+  height: 50%;
   background-color: $color-background-gray;
   border-radius: 16px;
   padding: 24px;

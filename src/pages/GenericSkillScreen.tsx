@@ -47,7 +47,7 @@ export default function GenericSkillScreen({ type, next }: GenericSkillScreenPro
     updateFooter({
       isVisible: true,
       text: 'Continue',
-      isDisabled: false, // Normalmente non si blocca la selezione skill, opzionale
+      isDisabled: false, 
       dotIndex: DOT_INDEXES[type] || 3,
       onContinue: () => navigate(next),
       onBack: () => navigate(-1), // Torna indietro nella storia
