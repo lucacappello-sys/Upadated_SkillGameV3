@@ -1,0 +1,180 @@
+/* =========================
+ * VARIABILI NUOVA PALETTE
+ * ========================= */
+// Colori Ruoli
+$color-blue-card: #3FACE2;
+$color-orange-card: #E69B38;
+$color-navy-card: #2956A5;
+
+// Colori Settori 
+$color-sector-light-purple: #A7A8D4;
+$color-sector-medium-purple: #8182B6;
+$color-sector-dark-purple: #6563AA;
+
+// Altri colori
+$color-white: #ffffff;
+$color-selection-ring: #b8bcc9;
+$color-illustration-bg: #2c3e50;
+$transition-speed: 0.2s;
+
+/* -------------------------
+ * WRAPPER ESTERNO 
+ * ------------------------- */
+.selection-list {
+  height: 100%;
+  max-height: 85%;
+  width: 100%;
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* -------------------------
+ * CARD GENERICA (Uniformata)
+ * ------------------------- */
+.selection-card {
+  background-color: #ccc;
+  /* Fallback */
+  border-radius: 20px;
+  /* Arrotondamento più moderno */
+  padding: 24px;
+  transition: transform $transition-speed, box-shadow $transition-speed;
+
+  display: flex;
+  flex-direction: column;
+
+  /* *** DIMENSIONI FISSE UNIFICATE *** */
+  /* Questo garantisce che Ruoli e Settori siano identici */
+  flex: 0 0 auto;
+  /* Non crescere, non restringere, rispetta la width */
+  width: 300px;
+  /* Larghezza fissa confortevole */
+  height: 96%;
+  /* Altezza fissa per allineamento perfetto */
+
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  /* Per z-index su hover */
+  align-items: center;
+
+  /* Effetto Hover */
+  &:hover:not(.selection-card--static) {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+  }
+
+  /* Stato Selezionato */
+  &--selected {
+    box-shadow: 0 0 0 4px $color-selection-ring, 0 20px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px) scale(1.02);
+  }
+
+  /* Stato Statico (Review/Results) */
+  &--static {
+    cursor: default;
+
+    &:hover {
+      transform: none;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    &.selection-card--selected {
+      transform: none;
+    }
+
+    /* In review/results le card possono essere leggermente più piccole se necessario */
+    /* width: 260px; height: 400px; */
+  }
+
+  &__label {
+    color: $color-white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+    opacity: 0.9;
+  }
+
+  &__illustration-wrapper {
+    height: 35%;
+    width: 86%;
+    background-color: $color-white;
+    border-radius: 16px;
+    padding: 0px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    &--dark-bg {
+      background-color: $color-illustration-bg;
+    }
+  }
+
+  &__illustration {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__title {
+    color: $color-white;
+    text-align: center;
+    margin-bottom: 12px;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  &__description {
+    color: $color-white;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    text-align: center;
+    /* O left, a seconda del gusto */
+
+    /* Gestione testo lungo */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    /* Mostra max 7 righe */
+    -webkit-box-orient: vertical;
+
+    /* Spinge il testo a riempire lo spazio ma non oltre */
+    flex: 1;
+  }
+}
+
+/* =============================================
+   MODIFICATORI DI COLORE
+   ============================================= */
+
+// Ruoli
+.card-color--blue {
+  background-color: $color-blue-card !important;
+}
+
+.card-color--orange {
+  background-color: $color-orange-card !important;
+}
+
+.card-color--navy {
+  background-color: $color-navy-card !important;
+}
+
+// Settori (Nuova Palette Viola: Chiaro -> Medio -> Scuro)
+.card-color--sector-light {
+  background-color: $color-sector-light-purple !important;
+}
+
+.card-color--sector-medium {
+  background-color: $color-sector-medium-purple !important;
+}
+
+.card-color--sector-dark {
+  background-color: $color-sector-dark-purple !important;
+}

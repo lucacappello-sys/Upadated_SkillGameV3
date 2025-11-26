@@ -1,0 +1,123 @@
+$color-primary: #5dade2; 
+$color-text-dark: #2c3e50; 
+$color-background-gray: rgb(226, 228, 230); // Sfondo box skills
+$color-gray-border: #b8bcc9;
+$color-text-skill: rgb(0, 0, 4); 
+$transition-speed: 0.2s;
+
+/* -------------------------
+ * CONTENUTO SPECIFICO ABILITÀ (Usato all'interno di SkillBox)
+ * ------------------------- */
+.skill-select-content {
+  width: 100%;
+  
+  /* Larghezze specifiche per i vari layout delle skills */
+  &--single-column { max-width: 48rem; /* max-w-3xl */ }
+  &--two-column { max-width: 64rem; /* max-w-4xl */ }
+  &--three-column { max-width: 72rem; /* max-w-6xl */ }
+
+  &__title {
+    color: $color-text-skill;
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+.skill-group {
+  /* Contenitore grigio chiaro arrotondato */
+  background-color: $color-background-gray;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.skill-list {
+  /* Stile di default: colonna singola (Operational, Personal, Analytical) */
+  display: flex;
+  flex-direction: column;
+  gap: 16px; 
+  max-width: 448px; 
+  margin: 0 auto;
+
+  &--grid-2 { 
+    /* Collaboration, Management */
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+    gap: 16px 64px; 
+    max-width: none;
+    margin: 0;
+  }
+  
+  &--grid-3 { 
+    /* Technical, Interaction */
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px 32px; 
+    max-width: none;
+    margin: 0;
+  }
+  
+  /* Fix per il layout griglia responsiva se lo schermo è piccolo */
+  @media (max-width: 768px) {
+    &--grid-3, &--grid-2 {
+      grid-template-columns: 1fr; /* Colassa a 1 colonna su mobile */
+      gap: 16px;
+    }
+  }
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+
+  &--align-start {
+    align-items: flex-start;
+  }
+
+  &__checkbox {
+    /* Stile custom per checkbox (opzionale, altrimenti usa default browser) */
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 2px solid $color-gray-border;
+    cursor: pointer;
+    background-color: white;
+    display: grid;
+    place-content: center;
+    flex-shrink: 0;
+    
+    &:checked {
+      background-color: $color-primary;
+      border-color: $color-primary;
+      
+      /* Icona di spunta (svg inlined o pseudo element) */
+      &::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        background-color: white;
+        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+      }
+    }
+  }
+
+  &__label {
+    color: $color-text-dark;
+    transition: color $transition-speed;
+    font-size: 1rem;
+
+    .skill-item:hover & {
+      color: $color-primary;
+    }
+    
+    &--small-text {
+      font-size: 0.875rem; 
+    }
+  }
+}

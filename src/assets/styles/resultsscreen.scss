@@ -1,0 +1,157 @@
+$color-text-dark: #2c3e50;
+$color-background-light: #d8dce6;
+
+$color-success: #5ac18e; // Green >= 75%
+$color-warning: #e5b84b; // Yellow 50-74%
+$color-danger: #e57373; // Red < 50%
+
+$color-final-score-bg: #d4f1e8; // Light Greenish Blue
+$color-final-score-border: #4fb286; // Dark Green
+
+/* Contenitore principale dei risultati */
+.results-screen-content {
+  max-width: 1152px; /* max-w-6xl */
+  margin: 0 auto;
+  width: 100%;
+  
+  /* *** FIX CRITICO: Imposta altezza al 100% del contenitore padre *** */
+  height: 100%; 
+  
+  display: flex;
+  gap: 32px; /* gap-8 */
+  /* Rimuovi padding extra che potrebbe causare overflow */
+  padding: 0 1rem; 
+  
+  align-items: stretch; /* Assicura che entrambe le colonne usino tutta l'altezza */
+
+  /* COLONNA SINISTRA (Cards + Punteggio) */
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; 
+    width: 60%; /* Leggermente ridotto per dare spazio alle skill */
+    height: 100%;
+  }
+
+  &__cards {
+    /* *** FIX CRITICO: Sovrascrive height: 100% di .selection-list *** */
+    height: auto !important; 
+    flex: 1; /* Occupa lo spazio disponibile rimanente */
+    min-height: 0; /* Permette alle card di restringersi se necessario */
+    
+    display: flex;
+    gap: 16px;
+    margin-bottom: 0;
+    
+    /* Forza le card interne a stare dentro il flex container */
+    .selection-card {
+      height: 100%;
+      /* Riduce leggermente l'immagine se lo spazio è poco in verticale */
+      &__illustration-wrapper {
+        flex-shrink: 1; 
+        min-height: 100px; /* Un po' meno rigido di 150px in questo contesto stretto */
+      }
+      &__description {
+        /* Nascondi la descrizione se lo spazio è davvero critico nei risultati */
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
+  }
+
+  /* COLONNA DESTRA (Barre Skills) */
+  &__right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    /* Distribuisce le barre equamente nello spazio verticale */
+    justify-content: space-evenly; 
+    gap: 8px; 
+    width: 40%;
+    height: 100%;
+    padding-bottom: 10px; /* Piccolo margine dal fondo */
+  }
+}
+
+/* -------------------------
+ * FINAL SCORE BOX
+ * ------------------------- */
+.final-score-box {
+  background-color: $color-final-score-bg;
+  border: 4px solid $color-final-score-border;
+  border-radius: 16px;
+  padding: 16px; 
+  text-align: center;
+  flex-shrink: 0; /* Non si deve restringere */
+  
+  &__text {
+    color: $color-text-dark;
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  &__label {
+    font-weight: bold;
+  }
+  
+  &__value {
+    color: $color-final-score-border; 
+    font-weight: bold;
+    margin-left: 8px;
+  }
+}
+
+/* -------------------------
+ * SCORE BAR COMPONENT
+ * ------------------------- */
+.score-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  &__title {
+    color: $color-text-dark;
+    margin-bottom: 4px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    /* Evita che il titolo vada a capo se possibile */
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  &__bar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  &__bar-container {
+    flex: 1;
+    background-color: $color-background-light;
+    border-radius: 9999px;
+    height: 12px; /* h-3 approssimato */
+    overflow: hidden;
+  }
+  
+  &__bar {
+    height: 100%;
+    transition: width 0.5s;
+    border-radius: 9999px;
+    
+    &--high { background-color: $color-success; }
+    &--medium { background-color: $color-warning; }
+    &--low { background-color: $color-danger; }
+  }
+  
+  &__percentage {
+    color: $color-text-dark;
+    width: 40px; 
+    text-align: right;
+    font-weight: bold;
+    font-size: 0.875rem;
+  }
+}

@@ -1,0 +1,149 @@
+/* Variabili specifiche per questa pagina */
+$color-primary-blue: #4faadd; // L'azzurro del bordo/sfondo del pannello
+$color-text-dark: #2c3e50;
+$color-text-light: #5d6d7e;
+$color-bg-bar: #e0e6ed; // Sfondo grigio delle barre
+$color-fill-bar: #4a90e2; // Colore di riempimento standard skill
+
+.operator-profile-content {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* La Card Principale (Bordo Azzurro) */
+.profile-card {
+  background-color: $color-primary-blue;
+  border-radius: 24px;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  max-height: 650px; /* Limita l'altezza per mantenere l'aspetto compatto */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+
+  /* COLONNA SINISTRA: IMMAGINE */
+  &__image-section {
+    flex: 1.2; /* Occupa leggermente più spazio delle colonne info */
+    background-color: white;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* O 'cover' a seconda dell'immagine */
+      padding: 20px; /* Padding interno per l'immagine */
+    }
+  }
+
+  /* SEZIONE DESTRA: WRAPPER PER LE DUE COLONNE INFO */
+  &__info-section {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+  }
+}
+
+/* COLONNE INTERNE BIANCHE (Skills e Tasks) */
+.info-column {
+  flex: 1;
+  background-color: white;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto; /* Gestisce overflow su schermi piccoli */
+
+  &__title {
+    color: $color-primary-blue;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+}
+
+/* STILE SINGOLA SKILL (Barra di progresso) */
+.profile-skill {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__bar-bg {
+    width: 100%;
+    height: 12px;
+    background-color: $color-bg-bar;
+    border-radius: 99px;
+    overflow: hidden;
+  }
+
+  &__bar-fill {
+    height: 100%;
+    background-color: $color-fill-bar;
+    border-radius: 99px;
+  }
+
+  &__name {
+    font-size: 0.85rem;
+    color: $color-text-light;
+    font-weight: 600;
+  }
+}
+
+/* STILE SINGOLO TASK (Indicatore colorato) */
+.profile-task {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__indicator-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 8px;
+    background-color: $color-bg-bar;
+    border-radius: 99px;
+    overflow: hidden;
+    margin-bottom: 4px;
+  }
+
+  &__indicator {
+    height: 100%;
+    width: 40px; /* Larghezza fissa dell'indicatore colorato come da design */
+    border-radius: 99px;
+  }
+
+  &__name {
+    font-size: 0.85rem;
+    color: $color-text-light;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+}
+
+/* Responsive per schermi più piccoli */
+@media (max-width: 1024px) {
+  .profile-card {
+    flex-direction: column;
+    max-height: none; /* Rimuove limite altezza su mobile */
+    overflow-y: auto;
+
+    &__image-section {
+      height: 300px; /* Altezza fissa immagine su mobile */
+      flex: none;
+    }
+
+    &__info-section {
+      flex-direction: column; /* Colonne skill/task una sotto l'altra */
+    }
+  }
+}

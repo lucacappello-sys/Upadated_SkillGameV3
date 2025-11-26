@@ -1,0 +1,95 @@
+$color-bg-card: #eaf6fc; // Sfondo azzurro chiaro del form
+$color-text-dark: #1a2b49; // Blu scuro per titoli e label
+$color-border-input: #dcdcdc;
+$color-save-btn: #1f4494; // Blu scuro pulsante Save
+
+.user-info-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.user-info-card {
+  background-color: $color-bg-card;
+  border-radius: 24px;
+  padding: 40px;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  border: 1px solid rgba(255,255,255,0.5);
+
+  &__title {
+    color: $color-text-dark;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+}
+
+.info-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__label {
+    color: $color-text-dark;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid $color-border-input;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    outline: none;
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: $color-save-btn;
+    }
+    
+    &::placeholder {
+      color: #aaa;
+    }
+  }
+
+  &__save-button {
+    background-color: $color-save-btn;
+    color: white;
+    border: none;
+    border-radius: 99px;
+    padding: 12px 48px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    align-self: center;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: lighten($color-save-btn, 10%);
+    }
+    
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
