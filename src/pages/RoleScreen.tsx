@@ -31,7 +31,8 @@ export default function RoleScreen() {
   return (
     <div className="page-content">
       {/* Wrapper per centrare e limitare l'altezza (80%) */}
-      <div className="card-percentage-wrapper">
+      {/* Wrapper per centrare e limitare l'altezza (80%) */}
+      <div className="horizontal-scroll-wrapper">
         <div className="selection-list limit-height-80">
           {ROLES.map(role => (
             <SelectionCard

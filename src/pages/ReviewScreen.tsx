@@ -33,7 +33,7 @@ export default function ReviewScreen() {
 
   return (
     <div className="page-content">
-      <div className="card-percentage-wrapper">
+      <div className="horizontal-scroll-wrapper">
         <div className="selection-list limit-height-80" style={{ maxWidth: '900px' }}>
           {roleData && (
             <SelectionCard

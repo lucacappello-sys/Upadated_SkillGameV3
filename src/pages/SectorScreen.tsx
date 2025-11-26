@@ -32,7 +32,7 @@ export default function SectorScreen() {
       {/* Wrapper per lo scroll orizzontale */}
       <div className="horizontal-scroll-wrapper">
         {/* Qui usiamo limit-height-80 per l'altezza, ma lo scroll è gestito dal wrapper */}
-        <div className="selection-list limit-height-80">
+        <div className="selection-list selection-list--sectors limit-height-80">
           {SECTORS.map(sector => (
             <SelectionCard
               key={sector.id}

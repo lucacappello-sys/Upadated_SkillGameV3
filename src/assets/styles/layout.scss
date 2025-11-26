@@ -1,4 +1,5 @@
-@import './global.scss'; /* Assicura che il reset sia applicato */
+@import './global.scss';
+/* Assicura che il reset sia applicato */
 
 /* Variabili colori layout */
 $color-bg-main: #ffffff;
@@ -6,14 +7,17 @@ $color-bg-main: #ffffff;
 .app-layout {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Forza l'altezza a tutto schermo viewport */
-  width: 100vw;  /* Forza la larghezza a tutto schermo viewport */
+  height: 100vh;
+  /* Forza l'altezza a tutto schermo viewport */
+  width: 100vw;
+  /* Forza la larghezza a tutto schermo viewport */
   background-color: $color-bg-main;
   overflow: hidden;
 
   /* HEADER: Fisso in alto */
   &__header {
-    flex-shrink: 0; /* Non si rimpicciolisce mai */
+    flex-shrink: 0;
+    /* Non si rimpicciolisce mai */
     width: 100%;
     z-index: 50;
     /* Nessun margine o padding qui che possa creare spazi bianchi esterni */
@@ -21,12 +25,14 @@ $color-bg-main: #ffffff;
 
   /* MAIN: Area flessibile centrale */
   &__main {
-    flex: 1; /* Occupa tutto lo spazio verticale disponibile */
+    flex: 1;
+    /* Occupa tutto lo spazio verticale disponibile */
     position: relative;
     width: 100%;
-    overflow-y: auto; /* Abilita lo scroll SOLO per il contenuto centrale */
+    overflow-y: auto;
+    /* Abilita lo scroll SOLO per il contenuto centrale */
     overflow-x: hidden;
-    
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,7 +41,8 @@ $color-bg-main: #ffffff;
 
   /* FOOTER: Fisso in basso */
   &__footer {
-    flex-shrink: 0; /* Non si rimpicciolisce mai */
+    flex-shrink: 0;
+    /* Non si rimpicciolisce mai */
     width: 100%;
     z-index: 50;
   }
@@ -44,14 +51,16 @@ $color-bg-main: #ffffff;
 /* Utility per le pagine interne per gestire i propri spazi */
 .page-content {
   width: 100%;
-  max-width: 1200px;
   height: 90%;
-  flex: 1; /* Si adatta allo spazio del main */
-  
+  flex: 1;
+  /* Si adatta allo spazio del main */
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Centra verticalmente il contenuto nella pagina */
-  
-  padding: 20px; /* Padding interno sicuro per il contenuto */
+  justify-content: center;
+  /* Centra verticalmente il contenuto nella pagina */
+
+  padding: 20px;
+  /* Padding interno sicuro per il contenuto */
 }

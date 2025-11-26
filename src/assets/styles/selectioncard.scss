@@ -27,7 +27,13 @@ $transition-speed: 0.2s;
   display: flex;
   gap: 24px;
   justify-content: center;
+  /* Default: center per ruoli e review */
   align-items: center;
+
+  /* Modifier per i settori: allineamento a sinistra */
+  &--sectors {
+    justify-content: flex-start;
+  }
 }
 
 /* -------------------------
@@ -45,6 +51,10 @@ $transition-speed: 0.2s;
   flex: 0 0 auto;
   width: 300px;
   height: 96%;
+  scroll-snap-align: center;
+  /* Snap al centro */
+  flex-shrink: 0;
+  /* Impedisce che si rimpiccioliscano */
 
   cursor: pointer;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -174,4 +184,59 @@ $transition-speed: 0.2s;
 
 .card-color--sector-dark {
   background-color: $color-sector-dark-purple !important;
+}
+
+/* =============================================
+   UTILITY & WRAPPERS (SCROLL & LAYOUT)
+   ============================================= */
+
+/* Wrapper per lo scroll orizzontale (SectorScreen) */
+.horizontal-scroll-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  /* Smooth scroll su iOS */
+
+  display: flex;
+  align-items: center;
+
+  /* Nascondi scrollbar ma mantieni funzionalità */
+  scrollbar-width: none;
+
+  /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+  }
+
+  /* Quando la lista è dentro lo scroll wrapper */
+  .selection-list {
+    width: max-content;
+    /* Si espande quanto serve */
+    min-width: 100%;
+    /* Almeno quanto lo schermo */
+    padding: 0 40px;
+    /* Spazio laterale */
+    box-sizing: border-box;
+  }
+}
+
+/* Wrapper per centrare e limitare (RoleScreen, ReviewScreen) */
+.card-percentage-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  /* Niente scroll qui */
+}
+
+/* Utility per limitare altezza */
+.limit-height-80 {
+  height: 80% !important;
+  max-height: 80% !important;
 }
