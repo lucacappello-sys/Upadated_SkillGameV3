@@ -1,8 +1,8 @@
-import { SKILLS_DATA } from '../../data/GameData';
+import { ALL_SKILLS_UI } from '../../data/GameData';
 import '../../assets/styles/skillselectscreen.scss';
 
 interface SkillBoxProps {
-  skillType: string; // chiave di SKILLS_DATA (es. 'technical')
+  skillType: string; 
   title: string;
   selectedSkills: string[];
   onToggle: (skill: string) => void;
@@ -10,7 +10,7 @@ interface SkillBoxProps {
 
 export default function SkillBox({ skillType, title, selectedSkills, onToggle }: SkillBoxProps) {
   // Recupera la lista delle skill dal file dati statici
-  const skillsList = SKILLS_DATA[skillType] || [];
+  const skillsList = ALL_SKILLS_UI[skillType] || [];
 
   // Determina il layout CSS in base al tipo di skill
   let gridClass = 'skill-list--column'; // Default 1 colonna
@@ -26,7 +26,7 @@ export default function SkillBox({ skillType, title, selectedSkills, onToggle }:
 
   // Alcuni elenchi lunghi (interaction) richiedono font più piccolo e allineamento in alto
   const isStartAligned = ['interaction', 'technical'].includes(skillType);
-  const isSmallText = skillType === 'interaction';
+ 
 
   return (
     <div className={`skill-select-content ${contentWidthClass}`}>
@@ -45,7 +45,7 @@ export default function SkillBox({ skillType, title, selectedSkills, onToggle }:
                 checked={selectedSkills.includes(skill)}
                 onChange={() => onToggle(skill)}
               />
-              <span className={`skill-item__label ${isSmallText ? 'skill-item__label--small-text' : ''}`}>
+              <span className={`skill-item__label ${selectedSkills.includes(skill) ? 'skill-item__label--selected' : ''}`}>
                 {skill}
               </span>
             </label>

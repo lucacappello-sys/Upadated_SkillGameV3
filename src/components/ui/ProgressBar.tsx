@@ -18,10 +18,12 @@ export default function ProgressBar({ title, score }: ProgressBarProps) {
     return () => clearTimeout(timer);
   }, [score]);
 
-  // Determina colore in base al punteggio
-  let colorClass = 'score-bar--low';
-  if (score >= 75) colorClass = 'score-bar--high';
-  else if (score >= 50) colorClass = 'score-bar--medium';
+  // Determina colore in base al punteggio (Hex codes from user request)
+  const getBarColor = (s: number) => {
+    if (s >= 75) return '#5AC18E'; // Green
+    if (s >= 50) return '#E5B84B'; // Yellow
+    return '#E57373';              // Red
+  };
 
   return (
     <div className="score-bar">
@@ -29,8 +31,11 @@ export default function ProgressBar({ title, score }: ProgressBarProps) {
       <div className="score-bar__bar-wrapper">
         <div className="score-bar__bar-container">
           <div
-            className={`score-bar__bar ${colorClass}`}
-            style={{ width: `${animatedScore}%` }}
+            className="score-bar__bar"
+            style={{
+              width: `${animatedScore}%`,
+              backgroundColor: getBarColor(score)
+            }}
           />
         </div>
         <span className="score-bar__percentage">{score}%</span>

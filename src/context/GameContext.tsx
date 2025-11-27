@@ -1,5 +1,6 @@
-import  { useState, useMemo, useCallback, type ReactNode } from 'react'; // Aggiungi useCallback
+import { useState, useMemo, useCallback, type ReactNode } from 'react'; // Aggiungi useCallback
 import { GameContext, initialFooterState, initialHeaderState } from './useGame';
+import { ROLES, SECTORS, getCorrectSkills, ALL_SKILLS_UI } from '../data/GameData';
 
 export const GameProvider = ({ children }: { children: ReactNode }) => {
   // ... (stati vari: role, sector, skills, scores...)
@@ -8,14 +9,14 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
   const [skills, setSkills] = useState<string[]>([]);
   const [scores, setScores] = useState<Record<string, number>>({});
   const [finalScore, setFinalScore] = useState(0);
-  
+
   const [footerConfig, setFooterConfig] = useState(initialFooterState);
   const [headerConfig, setHeaderConfig] = useState(initialHeaderState);
 
   // ... (toggleSkill, resetSkills, calculateResults, resetGame... usa useCallback anche qui se possibile, ma meno critico se non sono in useEffect dipendenti)
 
   const toggleSkill = useCallback((skill: string) => {
-    setSkills(prev => 
+    setSkills(prev =>
       prev.includes(skill) ? prev.filter(s => s !== skill) : [...prev, skill]
     );
   }, []);
@@ -23,16 +24,50 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
   const resetSkills = useCallback(() => setSkills([]), []);
 
   const calculateResults = useCallback(() => {
-     // ... (logica calcolo) ...
-     // Per brevità non la riscrivo tutta, ma avvolgila in useCallback o lasciala fuori se non ha dipendenze reattive
-     // Se usa setScores, va bene.
-     //const randomScore = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min);
-     const newScores = { /* ... */ }; 
-     // ...
-     setScores(newScores);
-     // ...
-     setFinalScore(Math.round(80)); // placeholder
-  }, []);
+    if (!role || !sector) return;
+
+    const roleData = ROLES.find(r => r.id === role);
+    const sectorData = SECTORS.find(s => s.id === sector);
+
+    if (!roleData || !sectorData) return;
+
+    // Ottieni le skill corrette per questa combinazione
+    const correctSkills = getCorrectSkills(roleData.title, sectorData.title);
+
+    const newScores: Record<string, number> = {};
+    const totalCorrectAvailable = correctSkills.length;
+
+    // Calcola punteggio per ogni categoria
+    Object.entries(ALL_SKILLS_UI).forEach(([category, categorySkills]) => {
+      // Skill corrette che appartengono a questa categoria
+      const expectedInCategory = correctSkills.filter(skill => categorySkills.includes(skill));
+
+      // Skill selezionate dall'utente che sono corrette e appartengono a questa categoria
+      const foundInCategory = skills.filter(skill =>
+        expectedInCategory.includes(skill)
+      );
+
+      // Se non ci sono skill previste in questa categoria, diamo 100% (o 0% se vogliamo essere severi, ma 100 ha senso se "non hai sbagliato nulla")
+      // Tuttavia, se l'utente ha selezionato skill sbagliate in questa categoria, potremmo voler penalizzare.
+      // Per ora manteniamo la logica semplice: % di skill corrette trovate su quelle attese.
+      if (expectedInCategory.length > 0) {
+        newScores[category] = Math.round((foundInCategory.length / expectedInCategory.length) * 100);
+      } else {
+        newScores[category] = 100; // Nessuna skill richiesta, punteggio pieno
+      }
+    });
+
+    // Calcolo punteggio finale (totale skill corrette trovate / totale skill corrette attese)
+    // Nota: foundInCategory sopra è locale, ricalcoliamo il totale globale
+    const totalFound = skills.filter(skill => correctSkills.includes(skill)).length;
+
+    const finalScoreVal = totalCorrectAvailable > 0
+      ? Math.round((totalFound / totalCorrectAvailable) * 100)
+      : 0;
+
+    setScores(newScores);
+    setFinalScore(finalScoreVal);
+  }, [role, sector, skills]);
 
   const resetGame = useCallback(() => {
     setRole(null);

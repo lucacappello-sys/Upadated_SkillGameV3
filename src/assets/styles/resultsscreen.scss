@@ -72,13 +72,11 @@ $color-final-score-border: #4fb286; // Dark Green
     flex: 1;
     display: flex;
     flex-direction: column;
-    /* Distribuisce le barre equamente nello spazio verticale */
     justify-content: space-evenly;
     gap: 8px;
     width: 40%;
     height: 100%;
     padding-bottom: 10px;
-    /* Piccolo margine dal fondo */
   }
 }
 
@@ -92,7 +90,7 @@ $color-final-score-border: #4fb286; // Dark Green
   padding: 16px;
   text-align: center;
   flex-shrink: 0;
-  /* Non si deve restringere */
+  
 
   &__text {
     color: $color-text-dark;
@@ -125,7 +123,6 @@ $color-final-score-border: #4fb286; // Dark Green
     margin-bottom: 4px;
     font-weight: 500;
     font-size: 0.875rem;
-    /* Evita che il titolo vada a capo se possibile */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

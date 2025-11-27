@@ -100,51 +100,6 @@ export const SECTORS = [
 ];
 
 
-export const SKILLS_DATA: Record<string, string[]> = {
-  technical: [
-    'Quality assessment', 'Turning on machines/robot', 'Setting up the activity',
-    'Use of the Robot controller', 'Statistical process control', 'Understanding the Robot coding language',
-    'Data processing', 'Knowledge of robot mechanisms', 'General programming skills',
-    'Setting up the robot', 'Robot programming', 'Understand the robot feedback',
-    'Know how to interact with robots', 'Process awareness', 'Technical issues resolution',
-    'Digital systems usage', 'Digital data management', 'System state interpretation',
-    'Technical inspection', 'Algorithms output understanding', 'Problem / Alert management',
-    'Machine/Robot maintenance', 'Machine/Robot setting parameters', 'Working with high-tech sensors'
-  ],
-  operational: [
-    'Procedures knowledge of error situation', 'Task knowledge', 'Time management',
-    'Coping with pressure', 'Situational awareness', 'Fast task execution',
-    'Procedures knowledge', 'Handling unexpected events and emergencies'
-  ],
-  analytical: [
-    "Problem solving", "Data interpretation", "Decision Making",
-    "Making time-critical decisions", "Risk assessment", "Problem identification",
-    "Predictive maintenance", "Preventive maintenance",
-  ],
-  collaboration: [
-    'Conflict resolution', 'Team management', 'Supervising staff',
-    'Risk assessment', 'Monitoring workers\' safety on the production floor',
-    'Monitoring security procedures in warehouse operations'
-  ],
-  management: [
-    'Task/Production planning', 'Safety checking', 'Conflict resolution',
-    'Team management', 'Supervising staff', 'Risk assessment',
-    'Monitoring workers\' safety on the production floor',
-    'Monitoring security procedures in warehouse operations'
-  ],
-  personal: [
-    'Responsiveness', 'Adapting to changing situations', 'Manual Dexterity',
-    'Meet commitments (e.g., working plan and deadlines)', 'Observation skills',
-    'Dealing with challenging and stressful work conditions', 'Physical strength'
-  ],
-  interaction: [
-    'Production monitoring', 'Use gesture-based controls', 'Interact physically with cobots',
-    'Navigate and operate touchscreen-based interfaces', 'Use voice commands to start, stop, or adjust machinery without physical interaction.',
-    'Collaborate with robotic systems in shared workspaces', 'Respond to haptic (vibration) signals or tactile feedback',
-    'Utilize AR devices (such as smart glasses or tablets) to receive real-time, step-by-step assembly instructions and visual guidance.'
-  ]
-};
-
 export const ROLE_PROFILES: Record<number, { skills: { name: string, value: number }[], tasks: { name: string, color: string }[] }> = {
   1: {
     skills: [
