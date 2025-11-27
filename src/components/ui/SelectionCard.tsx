@@ -24,8 +24,9 @@ export default function SelectionCard({
   onSelect,
   isSector = false,
   isInteractive = true,
-  noShadow = false
-}: SelectionCardProps) {
+  noShadow = false,
+  showDescription = true
+}: SelectionCardProps & { showDescription?: boolean }) {
 
   const staticClass = !isInteractive ? 'selection-card--static' : '';
   const selectedClass = isSelected ? 'selection-card--selected' : '';
@@ -57,7 +58,7 @@ export default function SelectionCard({
       </div>
 
       <h3 className="selection-card__title">{data.title}</h3>
-      <p className="selection-card__description">{data.description}</p>
+      {showDescription && <p className="selection-card__description">{data.description}</p>}
     </div>
   );
 }

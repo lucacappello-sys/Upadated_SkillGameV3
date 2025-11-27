@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, type ReactNode } from 'react'; // Aggiungi useCallback
+import { useState, useMemo, useCallback, type ReactNode } from 'react';
 import { GameContext, initialFooterState, initialHeaderState } from './useGame';
 import { ROLES, SECTORS, getCorrectSkills, ALL_SKILLS_UI } from '../data/GameData';
 

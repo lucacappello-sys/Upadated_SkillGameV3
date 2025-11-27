@@ -8,9 +8,9 @@ import '../assets/styles/resultsscreen.scss';
 
 export default function ResultsScreen() {
   const navigate = useNavigate();
-  const { 
-    selectedRole, selectedSector, scores, finalScore, 
-    updateHeader, updateFooter 
+  const {
+    selectedRole, selectedSector, scores, finalScore,
+    updateHeader, updateFooter
   } = useGame();
 
   const roleData = ROLES.find(r => r.id === selectedRole);
@@ -51,10 +51,10 @@ export default function ResultsScreen() {
         {/* Colonna Sinistra: Card e Score Finale */}
         <div className="results-screen-content__left">
           <div className="results-screen-content__cards">
-            {roleData && <SelectionCard data={roleData} isInteractive={false} />}
-            {sectorData && <SelectionCard data={sectorData} isSector={true} isInteractive={false} />}
+            {roleData && <SelectionCard data={roleData} isInteractive={false} showDescription={false} />}
+            {sectorData && <SelectionCard data={sectorData} isSector={true} isInteractive={false} showDescription={false} />}
           </div>
-          
+
           <div className="final-score-box">
             <span className="final-score-box__text">
               Final Score: <span className="final-score-box__value">{finalScore}% Correct Answers</span>
