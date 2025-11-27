@@ -34,6 +34,8 @@ export interface GameContextType extends GameState {
   resetGame: () => void;
   updateFooter: (config: Partial<GameState['footerConfig']>) => void;
   updateHeader: (config: Partial<GameState['headerConfig']>) => void;
+  saveResultsToSupabase: () => Promise<void>;
+  saveUserInfoToSupabase: (data: { jobTitle: string; industry: string; country: string }) => Promise<void>;
 }
 
 export const initialFooterState = {
@@ -41,7 +43,7 @@ export const initialFooterState = {
   isDisabled: false,
   text: 'Continue',
   dotIndex: 0,
-  onContinue: () => {},
+  onContinue: () => { },
   altColor: false
 };
 

@@ -1,6 +1,7 @@
 import { useState, useMemo, useCallback, type ReactNode } from 'react';
 import { GameContext, initialFooterState, initialHeaderState } from './useGame';
 import { ROLES, SECTORS, getCorrectSkills, ALL_SKILLS_UI } from '../data/GameData';
+import { supabase } from '../supabaseClient';
 
 export const GameProvider = ({ children }: { children: ReactNode }) => {
   // ... (stati vari: role, sector, skills, scores...)
@@ -69,12 +70,136 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
     setFinalScore(finalScoreVal);
   }, [role, sector, skills]);
 
+  // Stato per il timestamp della sessione
+  const [sessionTimestamp, setSessionTimestamp] = useState<string | null>(null);
+
+  const saveResultsToSupabase = useCallback(async () => {
+    if (!role || !sector) return;
+
+    const roleData = ROLES.find(r => r.id === role);
+    const sectorData = SECTORS.find(s => s.id === sector);
+
+    const roleTitle = roleData?.title || 'N/A';
+    const sectorTitle = sectorData?.title || 'N/A';
+
+    // Chiave condivisa tra le due fasi
+    const ts = new Date().toISOString();
+
+    // 1) INSERT di base
+    const baseInsert = {
+      Timestamp: ts,
+      Role: roleTitle,
+      Scenario: sectorTitle,
+      'Final Score': `${finalScore}% Correct Answers`,
+      Job: '',
+      Context: '',
+      Country: '',
+    };
+
+    try {
+      const { error: insertErr } = await supabase
+        .from('game_sessions')
+        .insert([baseInsert]);
+
+      if (insertErr) {
+        console.error('[Supabase INSERT error]', insertErr);
+        // Non blocchiamo l'utente, ma logghiamo l'errore
+        return;
+      }
+
+      // 2) UPDATE delle colonne skill
+      // Mappiamo le skill selezionate nelle rispettive categorie
+      const skillsByCategory: Record<string, string[]> = {
+        "Technical": [],
+        "Operational": [],
+        "Analytical": [],
+        "Collaboration": [],
+        "Management": [],
+        "Personal/Soft": [],
+        "Interaction/UX": []
+      };
+
+      // Helper per mappare le chiavi di ALL_SKILLS_UI ai nomi delle colonne DB
+      const categoryMap: Record<string, string> = {
+        "technical": "Technical",
+        "operational": "Operational",
+        "analytical": "Analytical",
+        "collaboration": "Collaboration",
+        "management": "Management",
+        "personal": "Personal/Soft",
+        "interaction": "Interaction/UX"
+      };
+
+      // Iteriamo su tutte le categorie per trovare dove stanno le skill selezionate
+      Object.entries(ALL_SKILLS_UI).forEach(([catKey, catSkills]) => {
+        const dbColumnName = categoryMap[catKey];
+        if (dbColumnName) {
+          // Troviamo le skill selezionate che appartengono a questa categoria
+          const found = skills.filter(s => catSkills.includes(s));
+          if (found.length > 0) {
+            skillsByCategory[dbColumnName] = found;
+          }
+        }
+      });
+
+      // Creiamo il payload per l'update: ogni colonna avrà una stringa con le skill separate da virgola
+      const updatePayload: Record<string, string> = {};
+      Object.entries(skillsByCategory).forEach(([col, skillList]) => {
+        if (skillList.length > 0) {
+          updatePayload[col] = skillList.join(', ');
+        }
+      });
+
+      // RIMOSSO: updatePayload['Skills'] = skills.join(', '); perché la colonna non esiste
+
+      const { error: updateSkillsErr } = await supabase
+        .from('game_sessions')
+        .update(updatePayload)
+        .eq('Timestamp', ts);
+
+      if (updateSkillsErr) {
+        console.warn('[Supabase UPDATE skills error]', updateSkillsErr);
+      }
+
+      setSessionTimestamp(ts);
+    } catch (e) {
+      console.error('[Network/Unexpected error during INSERT/UPDATE]', e);
+    }
+  }, [role, sector, finalScore, skills]);
+
+  const saveUserInfoToSupabase = useCallback(async (data: { jobTitle: string; industry: string; country: string }) => {
+    if (!sessionTimestamp) {
+      console.warn('Sessione non valida: non trovo la riga precedente.');
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+        .from('game_sessions')
+        .update({
+          Job: data.jobTitle,
+          Context: data.industry,
+          Country: data.country,
+        })
+        .eq('Timestamp', sessionTimestamp);
+
+      if (error) {
+        console.error('[Supabase UPDATE user info error]', error);
+        throw error;
+      }
+    } catch (e) {
+      console.error('[Network/Unexpected error during UPDATE user info]', e);
+      throw e;
+    }
+  }, [sessionTimestamp]);
+
   const resetGame = useCallback(() => {
     setRole(null);
     setSector(null);
     setSkills([]);
     setScores({});
     setFinalScore(0);
+    setSessionTimestamp(null);
   }, []);
 
   // *** FIX CRITICO QUI SOTTO ***
@@ -102,8 +227,10 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
     calculateResults,
     resetGame,
     updateFooter,
-    updateHeader
-  }), [role, sector, skills, scores, finalScore, footerConfig, headerConfig, toggleSkill, resetSkills, calculateResults, resetGame, updateFooter, updateHeader]);
+    updateHeader,
+    saveResultsToSupabase,
+    saveUserInfoToSupabase
+  }), [role, sector, skills, scores, finalScore, footerConfig, headerConfig, toggleSkill, resetSkills, calculateResults, resetGame, updateFooter, updateHeader, saveResultsToSupabase, saveUserInfoToSupabase]);
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 };

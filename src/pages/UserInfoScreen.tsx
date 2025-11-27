@@ -5,16 +5,16 @@ import '../assets/styles/userinfoscreen.scss';
 
 export default function UserInfoScreen() {
   const navigate = useNavigate();
-  const { updateHeader, updateFooter, resetGame } = useGame();
+  const { updateHeader, updateFooter, resetGame, saveUserInfoToSupabase } = useGame();
   const [form, setForm] = useState({ role: '', sector: '', country: '' });
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
     // Nascondiamo l'header standard per pulizia, o lo lasciamo vuoto
     updateHeader({ title: '', subtitle: '' });
-    
+
     // Disabilitiamo il footer standard perché il pulsante di salvataggio è nel form
-    updateFooter({ isVisible: false }); 
+    updateFooter({ isVisible: false });
   }, [updateHeader, updateFooter]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,14 +24,23 @@ export default function UserInfoScreen() {
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSaving(true);
-    
-    // Simulazione salvataggio API
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSaving(false);
-    alert("Saved successfully!");
-    resetGame();
-    navigate('/');
+
+    try {
+      await saveUserInfoToSupabase({
+        jobTitle: form.role,
+        industry: form.sector,
+        country: form.country
+      });
+
+      alert("Saved successfully!");
+      resetGame();
+      navigate('/');
+    } catch (error) {
+      console.error("Error saving user info:", error);
+      alert("Failed to save user info. Please try again.");
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   const isValid = form.role && form.sector && form.country;
@@ -41,41 +50,41 @@ export default function UserInfoScreen() {
       <div className="user-info-content">
         <div className="user-info-card">
           <h2 className="user-info-card__title">Tell us about you!</h2>
-          
+
           <form className="info-form" onSubmit={handleSave}>
             <div className="info-form__group">
               <label className="info-form__label">Job title / Role *</label>
-              <input 
-                name="role" 
-                className="info-form__input" 
+              <input
+                name="role"
+                className="info-form__input"
                 placeholder="Input"
-                value={form.role} 
-                onChange={handleChange} 
+                value={form.role}
+                onChange={handleChange}
               />
             </div>
             <div className="info-form__group">
               <label className="info-form__label">Industry / Sector *</label>
-              <input 
-                name="sector" 
-                className="info-form__input" 
+              <input
+                name="sector"
+                className="info-form__input"
                 placeholder="Input"
-                value={form.sector} 
-                onChange={handleChange} 
+                value={form.sector}
+                onChange={handleChange}
               />
             </div>
             <div className="info-form__group">
               <label className="info-form__label">Country in which you work *</label>
-              <input 
-                name="country" 
-                className="info-form__input" 
+              <input
+                name="country"
+                className="info-form__input"
                 placeholder="Input"
-                value={form.country} 
-                onChange={handleChange} 
+                value={form.country}
+                onChange={handleChange}
               />
             </div>
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className="info-form__save-button"
               disabled={!isValid || isSaving}
             >

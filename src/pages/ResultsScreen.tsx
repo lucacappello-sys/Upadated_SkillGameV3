@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGame } from '../context/useGame';
 import SelectionCard from '../components/ui/SelectionCard';
@@ -10,8 +10,10 @@ export default function ResultsScreen() {
   const navigate = useNavigate();
   const {
     selectedRole, selectedSector, scores, finalScore,
-    updateHeader, updateFooter
+    updateHeader, updateFooter, saveResultsToSupabase
   } = useGame();
+
+  const [isSaving, setIsSaving] = useState(false);
 
   const roleData = ROLES.find(r => r.id === selectedRole);
   const sectorData = SECTORS.find(s => s.id === selectedSector);
@@ -36,14 +38,19 @@ export default function ResultsScreen() {
 
     updateFooter({
       isVisible: true,
-      text: 'Continue',
-      isDisabled: false,
+      text: isSaving ? 'Saving...' : 'Continue',
+      isDisabled: isSaving,
       dotIndex: 9,
-      onContinue: () => navigate('/profile'), // Va al profilo operatore
+      onContinue: async () => {
+        setIsSaving(true);
+        await saveResultsToSupabase();
+        setIsSaving(false);
+        navigate('/user-info'); // Va al form info utente
+      },
       onBack: undefined, // Evitiamo di tornare al loading
       altColor: true
     });
-  }, [navigate, updateHeader, updateFooter]);
+  }, [navigate, updateHeader, updateFooter, saveResultsToSupabase, isSaving]);
 
   return (
     <div className="page-content">
