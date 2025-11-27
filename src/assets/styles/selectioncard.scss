@@ -167,31 +167,14 @@ $transition-speed: 0.2s;
     /* Gestione testo lungo - scrollable su tablet */
     overflow-y: auto;
     max-height: 150px;
-    padding-right: 8px;
-    /* Spazio per la scrollbar */
 
-    /* Scrollbar personalizzata per tablet */
-    scrollbar-width: thin;
-    /* Firefox */
-    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+    /* Nasconde la scrollbar ma mantiene la funzionalità di scroll */
+    scrollbar-width: none;
     /* Firefox */
 
     /* Webkit browsers (Chrome, Safari, Edge) */
     &::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: rgba(255, 255, 255, 0.3);
-      border-radius: 3px;
-
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.5);
-      }
+      display: none;
     }
 
     flex: 1;
