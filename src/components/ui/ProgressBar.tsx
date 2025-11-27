@@ -1,4 +1,5 @@
-import '../../assets/styles/resultsscreen.scss'; // Assumiamo che gli stili siano qui o in un file dedicato
+import { useState, useEffect } from 'react';
+import '../../assets/styles/resultsscreen.scss';
 
 interface ProgressBarProps {
   title: string;
@@ -6,6 +7,17 @@ interface ProgressBarProps {
 }
 
 export default function ProgressBar({ title, score }: ProgressBarProps) {
+  const [animatedScore, setAnimatedScore] = useState(0);
+
+  useEffect(() => {
+    // Start animation after a short delay
+    const timer = setTimeout(() => {
+      setAnimatedScore(score);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [score]);
+
   // Determina colore in base al punteggio
   let colorClass = 'score-bar--low';
   if (score >= 75) colorClass = 'score-bar--high';
@@ -18,7 +30,7 @@ export default function ProgressBar({ title, score }: ProgressBarProps) {
         <div className="score-bar__bar-container">
           <div
             className={`score-bar__bar ${colorClass}`}
-            style={{ width: `${score}%` }}
+            style={{ width: `${animatedScore}%` }}
           />
         </div>
         <span className="score-bar__percentage">{score}%</span>

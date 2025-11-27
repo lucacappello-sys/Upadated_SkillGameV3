@@ -147,7 +147,7 @@ $color-final-score-border: #4fb286; // Dark Green
 
   &__bar {
     height: 100%;
-    transition: width 0.5s;
+    transition: width 1.2s ease-out;
     border-radius: 9999px;
 
     &--high {

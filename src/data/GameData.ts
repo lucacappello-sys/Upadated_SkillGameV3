@@ -24,9 +24,9 @@ export const IMAGES = {
 };
 
 export const ROLE_COLORS: Record<number, string> = {
-  1: '#3FACE2', // Blue
-  2: '#E69B38', // Orange
-  3: '#2956A5'  // Navy
+  1: '#3FACE2',
+  2: '#E69B38',
+  3: '#2956A5'
 };
 
 export const ROLES = [
@@ -77,7 +77,7 @@ export const SECTORS = [
     id: 3,
     label: 'Sector 3',
     title: 'LOGISTIC SECTOR',
-    description: 'The logistics sector deals with a challenging variety of products. The new Industry 5.0 technologies aim at streamlining the order preparation process and stock management by using AI-enhanced robots, capable of handling diverse product characteristics. ',
+    description: 'The logistics sector deals with a challenging variety of products. The new Industry 5.0 technologies aim at streamlining the order preparation process and stock management by using AI-enhanced robots, capable of handling diverse product characteristics. ',
     colorClass: 'card-color--sector-dark',
     illustration: IMAGES.sector3
   },
@@ -194,4 +194,322 @@ export const ROLE_PROFILES: Record<number, { skills: { name: string, value: numb
       { name: 'Handling of Alarms and Failures', color: '#e17055' }
     ]
   }
+};
+
+// =============================================
+// SCORING DATA
+// =============================================
+
+// All skills organized by category for the UI
+export const ALL_SKILLS_UI: Record<string, string[]> = {
+  "personal": [
+    'Responsiveness',
+    'Adapting to changing situations',
+    'Manual Dexterity',
+    'Meet commitments (e.g., working plan and deadlines)',
+    'Observation skills',
+    'Dealing with challenging and stressful work conditions',
+    'Physical strength'
+  ],
+  "management": [
+    'Task/Production planning',
+    'Safety checking',
+    'Conflict resolution',
+    'Team management',
+    'Supervising staff',
+    'Risk assessment',
+    'Monitoring workers\' safety on the production floor',
+    'Monitoring security procedures in warehouse operations'
+  ],
+  "collaboration": [
+    'Revising algorithm\'s suggestion',
+    'Digital System/Machine/Robot automatic reports understanding',
+    'Coordination across operators',
+    'Coordination with the robot work',
+    'Assisting others in complex situations',
+    'Understand AI-generated insights',
+    'Provide feedback to AI systems',
+    'Assign and manage tasks',
+    'Avoid collision with AI'
+  ],
+  "interaction": [
+    'Navigate and operate touchscreen-based interfaces',
+    'Utilize AR devices (such as smart glasses or tablets) to receive real-time, step-by-step assembly instructions and visual guidance',
+    'Production monitoring',
+    'Use voice commands to start, stop, or adjust machinery without physical interaction',
+    'Collaborate with robotic systems in shared workspaces',
+    'Use gesture-based controls',
+    'Respond to haptic (vibration) signals or tactile feedback',
+    'Interact physically with cobots'
+  ],
+  "analytical": [
+    'Problem solving',
+    'Data interpretation',
+    'Decision Making',
+    'Making time-critical decisions',
+    'Problem identification',
+    'Predictive maintenance',
+    'Preventive maintenance'
+  ],
+  "operational": [
+    'Procedures knowledge of error situation',
+    'Process awareness',
+    'Task knowledge',
+    'Time management',
+    'Coping with pressure',
+    'Situational awareness',
+    'Fast task execution',
+    'Procedures knowledge',
+    'Handling unexpected events and emergencies'
+  ],
+  "technical": [
+    'Technical issues resolution',
+    'Digital systems usage',
+    'Digital data management',
+    'System state interpretation',
+    'Technical inspection',
+    'Problem / Alert management',
+    'Algorithms output understanding',
+    'Quality assessment',
+    'Setting up the activity',
+    'Statistical process control',
+    'Understanding AI systems',
+    'Data processing',
+    'Coding',
+    'Knowledge of Machine/Robot task',
+    'Machine/Robot maintenance',
+    'Machine/Robot setting parameters',
+    'Turning on machines/robot',
+    'Use of the Robot controller',
+    'Understanding the Robot coding/language',
+    'Knowledge of robot mechanisms',
+    'Setting up the robot',
+    'Robot programming',
+    'Understand the robot feedback',
+    'Deburring',
+    'Scanning',
+    'Fly the drone',
+    'Robot Trajectory revision',
+    'Operating mobile plant',
+    'Driving vehicles',
+    'Monitor moving workpiece in a machine'
+  ]
+};
+
+// Correct skills for each role-sector combination
+export const CORRECT_SKILLS_DATA: Record<string, Record<string, string[]>> = {
+  "AUTOMOTIVE SECTOR": {
+    "SMART LINE OPERATOR": [
+      "Task knowledge",
+      "Procedures knowledge of error situation",
+      "Situational awareness",
+      "Use of the Robot controller",
+      "Process awareness",
+      "Understand the robot feedback",
+      "Know how to interact with robots",
+      "Technical issues resolution",
+      "Knowledge of Machine/Robot task",
+      "Coordination with the robot work",
+      "Collaborate with robotic systems in shared workspaces"
+    ],
+    "PLANT FLOW-KEEPER": [
+      "Know how to interact with robots",
+      "Use of the Robot controller",
+      "Understand the robot feedback",
+      "Handling unexpected events and emergencies",
+      "Coordination across operators",
+      "Conflict resolution",
+      "Team management",
+      "Supervising staff",
+      "Monitoring security procedures in warehouse operations"
+    ],
+    "TECH SOLVER": [
+      "Knowledge of robot mechanisms",
+      "Robot programming",
+      "Know how to interact with robots",
+      "Use of the Robot controller",
+      "Understand the robot feedback",
+      "Technical issues resolution",
+      "Technical inspection",
+      "Interact physically with cobots",
+      "Problem identification"
+    ]
+  },
+  "FOOD SECTOR": {
+    "SMART LINE OPERATOR": [
+      "System state interpretation",
+      "Turning on machines/robot",
+      "Setting up the robot",
+      "Problem / Alert management",
+      "Quality assessment",
+      "Use of the Robot controller",
+      "Understand the robot feedback",
+      "Process awareness",
+      "Digital systems usage",
+      "Know how to interact with robots",
+      "Coordination with the robot work",
+      "Situational awareness",
+      "Task knowledge",
+      "Procedures knowledge",
+      "Procedures knowledge of error situation",
+      "Production monitoring",
+      "Collaborate with robotic systems in shared workspaces"
+    ],
+    "PLANT FLOW-KEEPER": [
+      "Task/Production planning",
+      "Safety checking",
+      "Setting up the activity",
+      "Machine/Robot setting parameters",
+      "Digital systems usage",
+      "Risk assessment",
+      "Problem identification",
+      "Task knowledge",
+      "Handling unexpected events and emergencies"
+    ],
+    "TECH SOLVER": [
+      "Technical inspection",
+      "Use of the robot controller",
+      "Data interpretation",
+      "Knowledge of robot mechanisms",
+      "Know how to interact with robots",
+      "Robot programming",
+      "Technical issues resolution",
+      "Understand the robot feedback",
+      "Problem identification"
+    ]
+  },
+  "LOGISTIC SECTOR": {
+    "SMART LINE OPERATOR": [
+      "Task knowledge",
+      "Procedures knowledge of error situation",
+      "Use of the Robot controller",
+      "Problem / Alert management",
+      "Setting up the activity",
+      "System state interpretation",
+      "Machine/robot setting parameters",
+      "Process awareness",
+      "Know how to interact with robots",
+      "Task/Production planning",
+      "Safety checking",
+      "Decision making",
+      "Problem solving",
+      "Problem identification",
+      "Data interpretation",
+      "Coordination with the robot work"
+    ],
+    "PLANT FLOW-KEEPER": [
+      "Task/Production planning",
+      "Alert management",
+      "Safety checking",
+      "Data interpretation",
+      "Decision Making"
+    ],
+    "TECH SOLVER": [
+      "Predictive maintenance",
+      "Data interpretation",
+      "Use of the Robot controller",
+      "Setting up the robot",
+      "Machine/robot setting parameters",
+      "Understanding the Robot coding/language",
+      "Technical inspection",
+      "Algorithms output understanding",
+      "Knowledge of robot mechanisms",
+      "Digital System/Machine/Robot automatic reports understanding",
+      "Alert management",
+      "Safety checking",
+      "Interact physically with cobots",
+      "Understand the robot feedback"
+    ]
+  },
+  "HAND TOOLS SECTOR": {
+    "SMART LINE OPERATOR": [
+      "Use of the Robot controller",
+      "Setting up the robot",
+      "Setting up the activity",
+      "Problem / Alert management",
+      "System state interpretation",
+      "Know how to interact with robots",
+      "Process awareness",
+      "Task knowledge",
+      "Data interpretation",
+      "Problem identification",
+      "Problem solving"
+    ],
+    "PLANT FLOW-KEEPER": [
+      "Use of the Robot controller",
+      "Setting up the robot",
+      "Setting up the activity",
+      "Problem / Alert management",
+      "System state interpretation",
+      "Know how to interact with robots",
+      "Process awareness",
+      "Task knowledge",
+      "Data interpretation",
+      "Problem identification",
+      "Problem solving"
+    ],
+    "TECH SOLVER": [
+      "Technical inspection",
+      "Use of the Robot controller",
+      "Data interpretation",
+      "Knowledge of robot mechanisms",
+      "Know how to interact with robots",
+      "Robot programming",
+      "Technical issues resolution",
+      "Understand the robot feedback",
+      "Problem identification"
+    ]
+  },
+  "CONSUMER GOODS SECTOR": {
+    "SMART LINE OPERATOR": [
+      "Quality assessment"
+    ],
+    "PLANT FLOW-KEEPER": [
+      "Use of the Robot controller",
+      "Understanding AI systems",
+      "Knowledge of Machine/Robot task",
+      "Setting up the activity",
+      "Problem / Alert management",
+      "Task knowledge",
+      "Making time critical decisions",
+      "Task/Production planning",
+      "Problem solving"
+    ],
+    "TECH SOLVER": [
+      "Data processing",
+      "Technical inspection",
+      "Use of the Robot controller",
+      "Data processing",
+      "Machine/Robot maintenance",
+      "Knowledge of robot mechanisms",
+      "Understanding the Robot coding/language",
+      "Understandin AI systems",
+      "Data interpretation",
+      "Problem solving",
+      "Decision making",
+      "Problem identification"
+    ]
+  }
+};
+
+// Create a map from skill name to category for quick lookup
+const SKILL_TO_CATEGORY_MAP = (() => {
+  const map = new Map<string, string>();
+  for (const [category, skills] of Object.entries(ALL_SKILLS_UI)) {
+    for (const skill of skills) {
+      map.set(skill, category);
+    }
+  }
+  return map;
+})();
+
+export const getSkillCategory = (skill: string): string | undefined => {
+  return SKILL_TO_CATEGORY_MAP.get(skill);
+};
+
+// Helper function to get correct skills for a role-sector combination
+export const getCorrectSkills = (roleName: string, sectorName: string): string[] => {
+  const sectorData = CORRECT_SKILLS_DATA[sectorName];
+  if (!sectorData) return [];
+  return sectorData[roleName] || [];
 };
