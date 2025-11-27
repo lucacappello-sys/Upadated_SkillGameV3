@@ -58,15 +58,13 @@ $color-bg-main: #ffffff;
 .page-content {
   width: 100%;
   height: 100%;
-  /* Occupa 100% dello spazio del main */
   max-height: 100%;
-  /* Non superare il 100% */
+
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
   box-sizing: border-box;
   overflow: hidden;
 
