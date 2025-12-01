@@ -31,8 +31,6 @@ export default function App() {
             <Route path="/role" element={<RoleScreen />} />
             <Route path="/sector" element={<SectorScreen />} />
             <Route path="/review" element={<ReviewScreen />} />
-
-            {/* Rotte Skills Generiche */}
             <Route path="/skills/technical" element={<GenericSkillScreen type="technical" next="/skills/operational" />} />
             <Route path="/skills/operational" element={<GenericSkillScreen type="operational" next="/skills/analytical" />} />
             <Route path="/skills/analytical" element={<GenericSkillScreen type="analytical" next="/skills/collaboration" />} />
@@ -42,11 +40,10 @@ export default function App() {
             <Route path="/skills/interaction" element={<GenericSkillScreen type="interaction" next="/loading" />} />
 
             {/* Rotte Finali */}
-            <Route path="/loading" element={<LoadingScreen />} />
             <Route path="/results" element={<ResultsScreen />} />
             <Route path="/profile" element={<OperatorProfileScreen />} />
           </Route>
-
+          <Route path="/loading" element={<LoadingScreen />} />
           <Route path="/user-info" element={<UserInfoScreen />} />
           {/* 3. Fallback: Se l'URL non esiste, torna alla home */}
           <Route path="*" element={<Navigate to="/" replace />} />
