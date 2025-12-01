@@ -57,7 +57,7 @@ export default function SelectionCard({
         />
       </div>
 
-      <h3 className="selection-card__title">{data.title}</h3>
+      <div className="selection-card__title">{data.title}</div>
       {showDescription && <p className="selection-card__description">{data.description}</p>}
     </div>
   );

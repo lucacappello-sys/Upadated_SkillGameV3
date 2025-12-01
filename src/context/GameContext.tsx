@@ -150,8 +150,6 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
         }
       });
 
-      // RIMOSSO: updatePayload['Skills'] = skills.join(', '); perché la colonna non esiste
-
       const { error: updateSkillsErr } = await supabase
         .from('game_sessions')
         .update(updatePayload)

@@ -1,4 +1,3 @@
-// *** IMPORTAZIONE ESPLICITA DELLE IMMAGINI ***
 import role1Img from '../assets/images/Smart operator.png';
 import role2Img from '../assets/images/Plant.png';
 import role3Img from '../assets/images/Tech.png';
@@ -100,53 +99,63 @@ export const SECTORS = [
 ];
 
 
-export const ROLE_PROFILES: Record<number, { skills: { name: string, value: number }[], tasks: { name: string, color: string }[] }> = {
+export const ROLE_PROFILES: Record<number, { skills: { name: string, value: number }[], tasks: { name: string, value: number, color: string }[] }> = {
   1: {
     skills: [
-      { name: 'Technical', value: 70 }, { name: 'Interaction/UX', value: 60 },
-      { name: 'Analytical', value: 50 }, { name: 'Collaboration/Communication', value: 80 },
-      { name: 'Personal/soft', value: 60 }, { name: 'Operational', value: 90 },
-      { name: 'Management', value: 30 }
+      { name: 'Technical', value: 83 },
+      { name: 'Interaction/UX', value: 53 },
+      { name: 'Analytical', value: 50 },
+      { name: 'Collaboration/ Communication', value: 43 },
+      { name: 'Personal/soft', value: 34 },
+      { name: 'Operational', value: 25 },
+      { name: 'Management', value: 18 }
     ],
     tasks: [
-      { name: 'Planning and configuration', color: '#00b894' },
-      { name: 'Execution and Operation', color: '#fdcb6e' },
-      { name: 'Management and Supervision', color: '#0984e3' },
-      { name: 'Collaboration and Assistance', color: '#ff7675' },
-      { name: 'Quality control', color: '#a29bfe' },
-      { name: 'Handling of Alarms and Failures', color: '#e17055' }
+      { name: 'Planning and configuration', value: 7, color: '#009B76' },
+      { name: 'Execution and Operation', value: 60, color: '#E0A727' },
+      { name: 'Management and Supervision', value: 11, color: '#007BF4' },
+      { name: 'Collaboration and Assistance', value: 3.6, color: '#DD455F' },
+      { name: 'Quality control', value: 11, color: '#8E554F' },
+      { name: 'Handling of Alarms and Failures', value: 7, color: '#DD6BDA' }
     ]
   },
   2: {
     skills: [
-      { name: 'Technical', value: 60 }, { name: 'Interaction/UX', value: 50 },
-      { name: 'Analytical', value: 70 }, { name: 'Collaboration/Communication', value: 90 },
-      { name: 'Personal/soft', value: 80 }, { name: 'Operational', value: 50 },
-      { name: 'Management', value: 90 }
+      { name: 'Technical', value: 72 },
+      { name: 'Interaction/UX', value: 67 },
+      { name: 'Analytical', value: 55 },
+      { name: 'Management', value: 55 },
+      { name: 'Collaboration/ Communication', value: 43 },
+      { name: 'Personal/soft', value: 35 },
+      { name: 'Operational', value: 28 },
+
     ],
     tasks: [
-      { name: 'Planning and configuration', color: '#00b894' },
-      { name: 'Execution and Operation', color: '#fdcb6e' },
-      { name: 'Management and Supervision', color: '#0984e3' },
-      { name: 'Collaboration and Assistance', color: '#ff7675' },
-      { name: 'Quality control', color: '#a29bfe' },
-      { name: 'Handling of Alarms and Failures', color: '#e17055' }
+      { name: 'Planning and configuration', value: 27, color: '#009B76' },
+      { name: 'Execution and Operation', value: 5, color: '#E0A727' },
+      { name: 'Management and Supervision', value: 32, color: '#007BF4' },
+      { name: 'Collaboration and Assistance', value: 13.5, color: '#DD455F' },
+      { name: 'Quality control', value: 18, color: '#8E554F' },
+      { name: 'Handling of Alarms and Failures', value: 4.5, color: '#DD6BDA' }
     ]
   },
   3: {
     skills: [
-      { name: 'Technical', value: 95 }, { name: 'Interaction/UX', value: 80 },
-      { name: 'Analytical', value: 90 }, { name: 'Collaboration/Communication', value: 50 },
-      { name: 'Personal/soft', value: 40 }, { name: 'Operational', value: 60 },
-      { name: 'Management', value: 40 }
+      { name: 'Technical', value: 88 },
+      { name: 'Analytical', value: 72.6 },
+      { name: 'Interaction/UX', value: 50 },
+      { name: 'Operational', value: 30 },
+      { name: 'Collaboration/ Communication', value: 15 },
+      { name: 'Personal/soft', value: 0 },
+      { name: 'Management', value: 0 }
     ],
     tasks: [
-      { name: 'Planning and configuration', color: '#00b894' },
-      { name: 'Execution and Operation', color: '#fdcb6e' },
-      { name: 'Management and Supervision', color: '#0984e3' },
-      { name: 'Collaboration and Assistance', color: '#ff7675' },
-      { name: 'Quality control', color: '#a29bfe' },
-      { name: 'Handling of Alarms and Failures', color: '#e17055' }
+      { name: 'Planning and configuration', value: 16.5, color: '#009B76' },
+      { name: 'Execution and Operation', value: 0, color: '#E0A727' },
+      { name: 'Management and Supervision', value: 33, color: '#007BF4' },
+      { name: 'Collaboration and Assistance', value: 0, color: '#DD455F' },
+      { name: 'Quality control', value: 50, color: '#8E554F' },
+      { name: 'Handling of Alarms and Failures', value: 0, color: '#DD6BDA' }
     ]
   }
 };

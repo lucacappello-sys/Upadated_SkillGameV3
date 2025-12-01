@@ -65,14 +65,14 @@ export default function OperatorProfileScreen() {
             <div className="info-column">
               <h4 className="info-column__title" style={{ color: roleColor }}>Tasks</h4>
               {profileData.tasks.map((task, idx) => (
-                <div key={idx} className="profile-task">
-                  <div className="profile-task__indicator-wrapper">
+                <div key={idx} className="profile-skill">
+                  <div className="profile-skill__bar-bg">
                     <div
-                      className="profile-task__indicator"
-                      style={{ backgroundColor: task.color }}
+                      className="profile-skill__bar-fill"
+                      style={{ width: `${task.value}%`, backgroundColor: task.color }}
                     />
                   </div>
-                  <span className="profile-task__name">{task.name}</span>
+                  <span className="profile-skill__name">{task.name}</span>
                 </div>
               ))}
             </div>

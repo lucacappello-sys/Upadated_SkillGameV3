@@ -45,7 +45,7 @@ export default function ResultsScreen() {
         setIsSaving(true);
         await saveResultsToSupabase();
         setIsSaving(false);
-        navigate('/user-info'); // Va al form info utente
+        navigate('/profile'); // Va alla schermata del profilo operatore
       },
       onBack: undefined, // Evitiamo di tornare al loading
       altColor: true

@@ -2,7 +2,7 @@ import { ALL_SKILLS_UI } from '../../data/GameData';
 import '../../assets/styles/skillselectscreen.scss';
 
 interface SkillBoxProps {
-  skillType: string; 
+  skillType: string;
   title: string;
   selectedSkills: string[];
   onToggle: (skill: string) => void;
@@ -19,19 +19,19 @@ export default function SkillBox({ skillType, title, selectedSkills, onToggle }:
   if (['technical'].includes(skillType)) {
     gridClass = 'skill-list--grid-3';
     contentWidthClass = 'skill-select-content--three-column';
-  } else if (['interaction'].includes(skillType)) {
+  } else if (['collaboration'].includes(skillType)) {
     gridClass = 'skill-list--grid-2';
     contentWidthClass = 'skill-select-content--two-column';
   }
 
   // Alcuni elenchi lunghi (interaction) richiedono font più piccolo e allineamento in alto
   const isStartAligned = ['interaction', 'technical'].includes(skillType);
- 
+
 
   return (
     <div className={`skill-select-content ${contentWidthClass}`}>
       <h3 className="skill-select-content__title">{title}</h3>
-      
+
       <div className="skill-group">
         <div className={`skill-list ${gridClass}`}>
           {skillsList.map((skill) => (

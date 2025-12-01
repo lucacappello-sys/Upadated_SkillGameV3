@@ -11,25 +11,25 @@ $transition-speed: 0.2s;
  * ------------------------- */
 .skill-select-content {
   width: 100%;
-  height: 50%;
+  height: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  /* Larghezze massime specifiche per i vari layout */
+  /* Larghezze massime specifiche per i vari layout basate sul numero di colonne */
   &--single-column {
-    max-width: 48rem;
-    /* ~768px */
+    max-width: 32rem;
+    /* ~512px - Più stretto per 1 colonna */
   }
 
   &--two-column {
-    max-width: 64rem;
-    /* ~1024px */
+    max-width: 52rem;
+    /* ~832px - Medio per 2 colonne */
   }
 
   &--three-column {
     max-width: 72rem;
-    /* ~1152px */
+    /* ~1152px - Largo per 3 colonne */
   }
 
   &__title {
@@ -40,15 +40,16 @@ $transition-speed: 0.2s;
     font-size: 18px;
     /* Ridotto da 20px */
     font-weight: bold;
+    flex-shrink: 0;
   }
 }
 
-/* IL BOX GRIGIO CHE CONTIENE I CHECKBOX */
+/* BOX GRIGIO */
 .skill-group {
   background-color: $color-background-gray;
   border-radius: 16px;
   padding: 16px;
-  height: 300px;
+  height: 332px;
   width: 100%;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   display: flex;
@@ -60,46 +61,30 @@ $transition-speed: 0.2s;
   /* Default: 1 Colonna (usato per Operational, Analytical, Personal) */
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   max-width: 448px;
   margin: 0 auto;
   height: 100%;
-  overflow-y: auto;
-  padding-right: 8px;
+  overflow-y: visible;
+  padding-right: 0;
 
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: $color-gray-border;
-    border-radius: 3px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-
-  /* Griglia a 2 Colonne (Collaboration, Management) */
+  /* Griglia a 2 Colonne (Collaboration) */
   &--grid-2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px 48px;
-    /* Ridotto gap orizzontale da 64px */
+    gap: 8px 32px;
     max-width: none;
     margin: 0;
-    height: 100%;
   }
 
   /* Griglia a 3 Colonne (Technical, Interaction) */
   &--grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px 24px;
-    /* Ridotto gap orizzontale da 32px */
+    gap: 6px 20px;
     max-width: none;
     margin: 0;
-    height: 100%;
+
   }
 
   /* Responsiveness per schermi piccoli */
@@ -109,7 +94,7 @@ $transition-speed: 0.2s;
     &--grid-3 {
       grid-template-columns: 1fr;
       /* Colassa tutto a 1 colonna */
-      gap: 10px;
+      gap: 8px;
     }
   }
 }
