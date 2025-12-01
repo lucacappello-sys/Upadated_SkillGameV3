@@ -58,8 +58,8 @@ export default function ResultsScreen() {
         {/* Colonna Sinistra: Card e Score Finale */}
         <div className="results-screen-content__left">
           <div className="results-screen-content__cards">
-            {roleData && <SelectionCard data={roleData} isInteractive={false} showDescription={false} />}
-            {sectorData && <SelectionCard data={sectorData} isSector={true} isInteractive={false} showDescription={false} />}
+            {roleData && <SelectionCard data={roleData} isInteractive={false} showDescription={false} noShadow={true} />}
+            {sectorData && <SelectionCard data={sectorData} isSector={true} isInteractive={false} showDescription={false} noShadow={true} />}
           </div>
 
           <div className="final-score-box">
