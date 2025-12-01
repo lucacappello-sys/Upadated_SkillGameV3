@@ -54,7 +54,18 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
       if (expectedInCategory.length > 0) {
         newScores[category] = Math.round((foundInCategory.length / expectedInCategory.length) * 100);
       } else {
-        newScores[category] = 100; // Nessuna skill richiesta, punteggio pieno
+        // If no skills are expected in this category, we start with 100%
+        // and penalize for every skill selected in this category (which is by definition wrong).
+        // Formula: 100 - (selected_in_category / total_in_category) * 100
+        const selectedInCategory = skills.filter(skill => categorySkills.includes(skill));
+        const totalInCategory = categorySkills.length;
+
+        if (totalInCategory > 0) {
+          const penalty = (selectedInCategory.length / totalInCategory) * 100;
+          newScores[category] = Math.max(0, Math.round(100 - penalty));
+        } else {
+          newScores[category] = 100;
+        }
       }
     });
 

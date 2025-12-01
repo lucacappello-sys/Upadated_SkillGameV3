@@ -41,8 +41,8 @@ $color-fill-bar: #4a90e2; // Colore di riempimento standard skill
     img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      /* O 'cover' a seconda dell'immagine */
+      object-fit: fill;
+
       padding: 20px;
       /* Padding interno per l'immagine */
     }

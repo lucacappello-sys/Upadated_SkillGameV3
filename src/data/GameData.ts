@@ -115,8 +115,8 @@ export const ROLE_PROFILES: Record<number, { skills: { name: string, value: numb
       { name: 'Execution and Operation', value: 60, color: '#E0A727' },
       { name: 'Management and Supervision', value: 11, color: '#007BF4' },
       { name: 'Collaboration and Assistance', value: 3.6, color: '#DD455F' },
-      { name: 'Quality control', value: 11, color: '#8E554F' },
-      { name: 'Handling of Alarms and Failures', value: 7, color: '#DD6BDA' }
+      { name: 'Quality control', value: 7, color: '#DD6BDA' },
+      { name: 'Handling of Alarms and Failures', value: 11, color: '#8E554F' }
     ]
   },
   2: {
@@ -135,8 +135,8 @@ export const ROLE_PROFILES: Record<number, { skills: { name: string, value: numb
       { name: 'Execution and Operation', value: 5, color: '#E0A727' },
       { name: 'Management and Supervision', value: 32, color: '#007BF4' },
       { name: 'Collaboration and Assistance', value: 13.5, color: '#DD455F' },
-      { name: 'Quality control', value: 18, color: '#8E554F' },
-      { name: 'Handling of Alarms and Failures', value: 4.5, color: '#DD6BDA' }
+      { name: 'Quality control', value: 4.5, color: '#DD6BDA' },
+      { name: 'Handling of Alarms and Failures', value: 18, color: '#8E554F' }
     ]
   },
   3: {
@@ -154,8 +154,8 @@ export const ROLE_PROFILES: Record<number, { skills: { name: string, value: numb
       { name: 'Execution and Operation', value: 0, color: '#E0A727' },
       { name: 'Management and Supervision', value: 33, color: '#007BF4' },
       { name: 'Collaboration and Assistance', value: 0, color: '#DD455F' },
-      { name: 'Quality control', value: 50, color: '#8E554F' },
-      { name: 'Handling of Alarms and Failures', value: 0, color: '#DD6BDA' }
+      { name: 'Quality control', value: 0, color: '#DD6BDA' },
+      { name: 'Handling of Alarms and Failures', value: 50, color: '#8E554F' }
     ]
   }
 };
