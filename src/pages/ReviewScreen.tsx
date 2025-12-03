@@ -34,22 +34,24 @@ export default function ReviewScreen() {
   return (
     <div className="page-content">
       <div className="horizontal-scroll-wrapper">
-        <div className="selection-list limit-height-80" style={{ maxWidth: '900px' }}>
-          {roleData && (
-            <SelectionCard
-              data={roleData}
-              isInteractive={false} // Disabilita hover/click
-              noShadow={true} // Nessuna ombra nella review
-            />
-          )}
-          {sectorData && (
-            <SelectionCard
-              data={sectorData}
-              isSector={true}
-              isInteractive={false} // Disabilita hover/click
-              noShadow={true} // Nessuna ombra nella review
-            />
-          )}
+        <div className="review-cards-container">
+          <div className="selection-list limit-height-80" style={{ maxWidth: '900px' }}>
+            {roleData && (
+              <SelectionCard
+                data={roleData}
+                isInteractive={false} // Disabilita hover/click
+                noShadow={true} // Nessuna ombra nella review
+              />
+            )}
+            {sectorData && (
+              <SelectionCard
+                data={sectorData}
+                isSector={true}
+                isInteractive={false} // Disabilita hover/click
+                noShadow={true} // Nessuna ombra nella review
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>

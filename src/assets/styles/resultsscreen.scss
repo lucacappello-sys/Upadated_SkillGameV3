@@ -61,6 +61,7 @@ $color-final-score-border: #4fb286; // Dark Green
         /* Nascondi la descrizione se lo spazio è davvero critico nei risultati */
         display: -webkit-box;
         -webkit-line-clamp: 3;
+        line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
@@ -90,7 +91,7 @@ $color-final-score-border: #4fb286; // Dark Green
   padding: 16px;
   text-align: center;
   flex-shrink: 0;
-  
+
 
   &__text {
     color: $color-text-dark;
