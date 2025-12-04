@@ -73,7 +73,7 @@ $color-bg-main: #ffffff;
   @media (max-width: 1024px) {
     padding: 8px;
     /* Ancora meno padding su tablet */
-    justify-content: flex-start;
+    justify-content: center;
     /* Allinea in alto invece che centrare */
   }
 }
