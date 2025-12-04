@@ -262,13 +262,13 @@ $transition-speed: 0.2s;
   justify-content: center;
   align-items: center;
   width: fit-content;
-  height: 70%;
+  height: 90%;
   /* Height constraint for the container */
   margin: 0 auto;
 
   /* Force all cards inside to have the same width */
   .selection-card {
-    width: 300px !important;
+    width: 42% !important;
     height: 100%;
   }
 }
