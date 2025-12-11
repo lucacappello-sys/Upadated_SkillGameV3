@@ -7,7 +7,7 @@ import sector2Img from '../assets/images/Automotive.png';
 import sector3Img from '../assets/images/Logistic.png';
 
 
-import sector4Img from '../assets/images/ConsumerGoods.png';
+import sector4Img from '../assets/images/ConsumerGoods.jpg';
 import sector5Img from '../assets/images/HandTools.png';
 
 
